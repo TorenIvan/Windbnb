@@ -1,12 +1,16 @@
 .nav-bar {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #icon-container {
-  justify-content: space-around;
+  flex: .2;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  background-color: blue;
 }
 
 .search-bar {
