@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: var(--almostWhite);
+  background-color: inherit;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -15,10 +15,10 @@
 
 .header {
   width: clamp(90%, 1250px, 100%);
-  background-color: bisque;
+  // background-color: bisque;
   height: 55px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  // justify-content: space-between;
 }

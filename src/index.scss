@@ -1,0 +1,28 @@
+$white: #ffffff;
+$black: #000000;
+$almost-white: "#f8f9fa";
+$almost-white-border: "#F2F2F2";
+$almost-black-color: "#00000080";
+$text: #333333;
+$text-disabled: #BDBDBD;
+$search-icon: #EB5757;
+
+body {
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-size: 1.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --white: #{$white};
+  --black: #{$black};
+  --almostWhite: #{$almost-white};
+  --almostWhiteBorder: #{$almost-white-border};
+  --almostBlack: #{$almost-black-color};
+  --text: #{$text};
+  --text-disabled: #{$text-disabled};
+  --search-icon: #{$search-icon};
+}
