@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react";
-import "./SearchBarStyles.scss";
+import "./SearchBar.scss";
 import Logo from "../../logo.png";
 import "font-awesome/css/font-awesome.min.css";
 

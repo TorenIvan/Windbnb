@@ -5,6 +5,7 @@ $almost-white-border: "#F2F2F2";
 $almost-black-color: "#00000080";
 $text: #333333;
 $text-disabled: #BDBDBD;
+$text-secondary: #4F4F4F;
 $search-icon: #EB5757;
 
 body {
@@ -25,4 +26,5 @@ body {
   --text: #{$text};
   --text-disabled: #{$text-disabled};
   --search-icon: #{$search-icon};
+  --text-secondary: #{$text-secondary};
 }

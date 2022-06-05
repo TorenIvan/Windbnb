@@ -18,8 +18,8 @@ header {
   min-width: 90%;
   max-width: 100%;
   display: flex;
-  flex: 3 3 0;
-  background-color: bisque;
+  flex: 2 2 0;
+  // background-color: bisque;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -28,7 +28,7 @@ header {
 main {
   display: flex;
   flex: 10;
-  background-color: blue;
+  // background-color: blue;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -36,8 +36,8 @@ main {
 
 footer {
   display: flex;
-  flex: 2 2 0;
-  background-color: green;
+  flex: 1 1 0;
+  // background-color: green;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;

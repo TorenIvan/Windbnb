@@ -1,7 +1,17 @@
 import React from "react";
+import "./InfoBar.scss";
 
 const InfoBar = () => {
-  return <div>InforBar</div>;
+  return (
+    <div id="info-bar">
+      <div id="country-info">
+        <p>Stays in Finland</p>
+      </div>
+      <div id="count-info">
+        <p>12+ stays</p>
+      </div>
+    </div>
+  );
 };
 
 export default InfoBar;
