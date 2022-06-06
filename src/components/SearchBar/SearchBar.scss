@@ -10,6 +10,10 @@ $border: 1px solid var(--almostWhiteBorder);
   // background-color: aqua;
 }
 
+.centralize {
+  justify-content: center;
+}
+
 #icon-container {
   // flex: .2;
   // min-width: 200px;
@@ -20,6 +24,7 @@ $border: 1px solid var(--almostWhiteBorder);
 
 .search-bar {
   border: #{$border};
+  height: 100%;
   max-height: 55px;
   border-radius: 16px;
   display: flex;
@@ -29,11 +34,23 @@ $border: 1px solid var(--almostWhiteBorder);
 
 .closed {
   width: clamp(400px, 90%, 30rem);
-  height: 100%;
+}
+
+.open {
+  width: clamp(400px, 100%, 2000px);
 }
 
 .closed-item {
   text-align: center;
+}
+
+.open-item {
+  flex: 1 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 2ch;
 }
 
 .closed-item>p {
