@@ -32,8 +32,18 @@ $border: 1px solid var(--almostWhiteBorder);
   align-items: center;
 }
 
+#logo {
+  height: 25px;
+  width: 100px;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 .closed {
-  width: clamp(400px, 90%, 30rem);
+  width: clamp(400px, 20vw, 30rem);
 }
 
 .open {
@@ -53,7 +63,7 @@ $border: 1px solid var(--almostWhiteBorder);
   margin-left: 2ch;
 }
 
-.closed-item>p {
+.closed-item p {
   font-weight: 400;
   font-size: 1.05ch;
 }
@@ -72,7 +82,7 @@ $border: 1px solid var(--almostWhiteBorder);
   border-right: #{$border};
 }
 
-#guests-item>p{
+#guests-item p{
   color: var(--text-disabled);
 }
 
@@ -85,6 +95,6 @@ $border: 1px solid var(--almostWhiteBorder);
   cursor: pointer;
 }
 
-#search-icon-item>i {
+#search-icon-item i {
   color: var(--search-icon);
 }
