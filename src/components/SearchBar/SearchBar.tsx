@@ -25,7 +25,7 @@ const SearchBar: FC = (): JSX.Element => {
       <div id="icon-container">
         <img id="logo" src={Logo} alt="logo" />
       </div>
-      <div className="search-bar closed">
+      <div className="search-bar">
         <div id="location-item" className="closed-item">
           <button onClick={handleLocationPress}>
             <p>Helsinki, Finland</p>

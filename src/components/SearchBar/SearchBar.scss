@@ -1,4 +1,6 @@
 $border: 1px solid var(--almostWhiteBorder);
+$medium: 1200px;
+$small: 924px;
 
 .nav-bar {
   flex: 1;
@@ -7,19 +9,19 @@ $border: 1px solid var(--almostWhiteBorder);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  // background-color: aqua;
-}
 
-.centralize {
-  justify-content: center;
+  @media screen and (max-width: $small) {
+    flex-direction: column;
+  }
 }
 
 #icon-container {
-  // flex: .2;
-  // min-width: 200px;
-  display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: $small) {
+    align-self: flex-start;
+  }
 }
 
 .search-bar {
@@ -30,11 +32,12 @@ $border: 1px solid var(--almostWhiteBorder);
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  width: clamp(400px, 20vw, 30rem);
+  box-shadow: 2px 2px 1px var(--almostWhiteBorder);
 
-#logo {
-  height: 25px;
-  width: 100px;
+  @media screen and (max-width: $small) {
+    width: 20rem;
+  }
 }
 
 button {
@@ -42,25 +45,8 @@ button {
   cursor: pointer;
 }
 
-.closed {
-  width: clamp(400px, 20vw, 30rem);
-}
-
-.open {
-  width: clamp(400px, 100%, 2000px);
-}
-
 .closed-item {
   text-align: center;
-}
-
-.open-item {
-  flex: 1 !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-left: 2ch;
 }
 
 .closed-item p {
@@ -73,7 +59,7 @@ button {
   border-right: #{$border};
 }
 
-#location-item>p {
+#location-item p {
   color: var(--text);
 }
 
@@ -82,17 +68,13 @@ button {
   border-right: #{$border};
 }
 
-#guests-item p{
+#guests-item p {
   color: var(--text-disabled);
 }
 
 #search-icon-item {
   flex: 1;
   font-size: smaller;
-}
-
-#search-icon-item:hover {
-  cursor: pointer;
 }
 
 #search-icon-item i {
