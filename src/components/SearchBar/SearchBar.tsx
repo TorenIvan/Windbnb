@@ -6,7 +6,6 @@ import "font-awesome/css/font-awesome.min.css";
 type clickEvent = React.MouseEvent<HTMLButtonElement>;
 
 const SearchBar: FC = (): JSX.Element => {
-  const [isOpen, setOpen] = useState<boolean>(false);
   const [editGuests, setEditGuests] = useState<boolean>(false);
   const [editLocation, setEditLocation] = useState<boolean>(false);
 
@@ -44,27 +43,6 @@ const SearchBar: FC = (): JSX.Element => {
       </div>
     </nav>
   );
-  // if (editGuests) {
-  //   searchBar = (
-  //     <nav className="nav-bar centralize">
-  //       <div className="search-bar open">
-  //         <div id="location-item" className="open-item">
-  //           <p>Location</p>
-  //           <p>Helsinki, Finland</p>
-  //         </div>
-  //         <div id="guests-item" className="open-item">
-  //           <p>Add guests</p>
-  //         </div>
-  //         <div id="search-icon-item" className="open-item">
-  //           <i className="fa fa-search" />
-  //         </div>
-  //       </div>
-  //     </nav>
-  //   );
-  // }
-  // if (editLocation) {
-  //   searchBar = <div className="search-bar open"></div>;
-  // }
 
   return searchBar;
 };

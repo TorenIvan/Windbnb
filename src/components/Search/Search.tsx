@@ -6,11 +6,9 @@ interface IProps {
   showGuests: boolean;
 }
 
-type returnType = JSX.Element | null;
-
-const Search: FC<IProps> = ({ showLocations, showGuests }): returnType => {
-  const isHidden: boolean = !(showLocations || showGuests);
-  if (isHidden) return null;
+const Search: FC<IProps> = ({ showLocations, showGuests }): JSX.Element | null => {
+  const isVisible: boolean = showLocations || showGuests;
+  if (isVisible) return null;
   return <></>;
 };
 
