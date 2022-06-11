@@ -8,7 +8,6 @@ interface IProps {
 
 const Search: FC<IProps> = ({ showLocations, showGuests }): JSX.Element | null => {
   const isVisible: boolean = showLocations || showGuests;
-console.log(isVisible);
 
   return (
     <div className={`overlay ${isVisible ? "show" : ""}`}>
