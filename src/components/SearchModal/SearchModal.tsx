@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "./Search.scss";
+import "./SearchModal.scss";
 
 interface IProps {
   showLocations: boolean;
@@ -8,7 +8,7 @@ interface IProps {
 
 const Search: FC<IProps> = ({ showLocations, showGuests }): JSX.Element | null => {
   const isVisible: boolean = showLocations || showGuests;
-  if (!isVisible) return null;
+
   return (
     <div className="search-container">
       <div className="search-bar-open">

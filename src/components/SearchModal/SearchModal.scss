@@ -3,16 +3,19 @@ $medium: 1200px;
 $small: 924px;
 
 .search-container {
-  position: absolute;
+  position: fixed;
+  background-color: rgba(79, 79, 79, 0.4);
   top: 0;
+  left: 0;
+  z-index: 10;
+  transition: top 0.5s ease-in;
   width: 100%;
-  background-color: inherit;
-  flex: 2 2 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 2rem; 
+  gap: 4em;
 }
 
 .search-bar-open {
@@ -23,7 +26,7 @@ $small: 924px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%; 
+  width: 80%; 
   box-shadow: 2px 2px 1px var(--almostWhiteBorder);
 
   @media screen and (max-width: $small) {
@@ -40,7 +43,7 @@ $small: 924px;
 }
 
 .editable {
- justify-content: flex-start; 
+  justify-content: flex-start;
 }
 
 .item-bar :not(.editable) {
