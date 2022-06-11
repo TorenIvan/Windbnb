@@ -10,15 +10,13 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      {/* <Search showLocations={showLocation} showGuests={showGuests} /> */}
-      {/* <div className="MainScreen"> */}
-        <header>
-          <SearchBar />
-          <InfoBar />
-        </header>
-        <main></main>
-        <footer></footer>
-      {/* </div> */}
+      <Search showLocations={showLocation} showGuests={showGuests} />
+      <header>
+        <SearchBar />
+        <InfoBar />
+      </header>
+      <main></main>
+      <footer></footer>
     </div>
   );
 };

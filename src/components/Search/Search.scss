@@ -1,0 +1,48 @@
+$border: 1px solid var(--almostWhiteBorder);
+$medium: 1200px;
+$small: 924px;
+
+.search-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: inherit;
+  flex: 2 2 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; 
+}
+
+.search-bar-open {
+  border: #{$border};
+  max-height: 55px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  box-shadow: 2px 2px 1px var(--almostWhiteBorder);
+
+  @media screen and (max-width: $small) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.item-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.editable {
+ justify-content: flex-start; 
+}
+
+.item-bar :not(.editable) {
+  justify-content: center;
+}
