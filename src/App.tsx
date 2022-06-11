@@ -6,7 +6,7 @@ import Overlay from "./components/OverlayWrapper/Overlay";
 import { FC, useState } from "react";
 
 const App: FC = (): JSX.Element => {
-  const [showLocation, setShowLocation] = useState<boolean>(true);
+  const [showLocation, setShowLocation] = useState<boolean>(false);
   const [showGuests, setShowGuests] = useState<boolean>(false);
 
   return (

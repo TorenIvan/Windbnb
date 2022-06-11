@@ -2,7 +2,7 @@ $border: 1px solid var(--almostWhiteBorder);
 $medium: 1200px;
 $small: 924px;
 
-.search-container {
+.overlay {
   position: fixed;
   background-color: rgba(79, 79, 79, 0.4);
   top: 0;
@@ -16,6 +16,20 @@ $small: 924px;
   justify-content: flex-start;
   align-items: center;
   gap: 4em;
+  visibility: hidden;
+}
+
+.overlay.show{
+  visibility: visible;
+}
+
+.search-container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25rem;
+  background-color: var(--almostWhite);
+
 }
 
 .search-bar-open {
@@ -26,7 +40,7 @@ $small: 924px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 80%; 
+  width: 80%;
   box-shadow: 2px 2px 1px var(--almostWhiteBorder);
 
   @media screen and (max-width: $small) {
