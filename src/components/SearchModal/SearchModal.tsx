@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Search: FC<IProps> = ({ showLocations, showGuests }): JSX.Element | null => {
-  const isVisible: boolean = showLocations || showGuests;
+  const isVisible: boolean = (showLocations || showGuests);
 
   return (
     <div className={`overlay ${isVisible ? "show" : ""}`}>
@@ -15,14 +15,14 @@ const Search: FC<IProps> = ({ showLocations, showGuests }): JSX.Element | null =
         <div className="search-bar-open">
           <div className="item-bar editable" id="location-bar">
             <div className="item-bar-text">
-              <p>Location</p>
-              <p>Helsinki, Finland</p>
+              <p className="title"> Location</p>
+              <p className="choice"> Helsinki, Finland</p>
             </div>
           </div>
           <div className="item-bar editable" id="guests-bar">
             <div className="item-bar-text">
-              <p>Guests</p>
-              <p>Add guests</p>
+              <p className="title">Guests</p>
+              <p className="choice">Add guests</p>
             </div>
           </div>
           <div className="item-bar" id="search-icon">

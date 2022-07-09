@@ -4,7 +4,7 @@ $small: 924px;
 
 .overlay {
   position: fixed;
-  background-color: rgba(79, 79, 79, 0.4);
+  background-color: var(--searchModal);
   top: 0;
   left: 0;
   z-index: 10;
@@ -19,7 +19,7 @@ $small: 924px;
   visibility: hidden;
 }
 
-.overlay.show{
+.overlay.show {
   visibility: visible;
 }
 
@@ -29,12 +29,15 @@ $small: 924px;
   width: 100%;
   height: 25rem;
   background-color: var(--almostWhite);
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-bar-open {
   border: #{$border};
-  max-height: 55px;
+  // max-height: 55px;
   border-radius: 16px;
   display: flex;
   flex-direction: row;
@@ -62,4 +65,33 @@ $small: 924px;
 
 .item-bar :not(.editable) {
   justify-content: center;
+}
+
+.item-bar-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 2em;
+}
+
+.item-bar-text p {
+  color: var(--text);
+  font-style: normal;
+}
+
+.title {
+  font-weight: 800;
+  font-size: .8ch;
+  line-height: 1ch;
+  text-transform: uppercase;
+}
+
+.choice {
+  font-weight: 400;
+  font-size: 1ch;
+  line-height: .8ch;
+}
+
+#random-item {
+  flex: 2;
 }
