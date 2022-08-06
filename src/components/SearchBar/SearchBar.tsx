@@ -1,23 +1,25 @@
-import React, { useState, useCallback, FC } from "react";
+import React, { useCallback, FC } from "react";
 import "./SearchBar.scss";
 import Logo from "../../logo.png";
 import "font-awesome/css/font-awesome.min.css";
 
 type clickEvent = React.MouseEvent<HTMLButtonElement>;
 
-const SearchBar: FC = (): JSX.Element => {
-  const [editGuests, setEditGuests] = useState<boolean>(false);
-  const [editLocation, setEditLocation] = useState<boolean>(false);
+interface IProps {
+  showLocation: () => void;
+  showGuests: () => void;
+}
 
-  const handleLocationPress = useCallback((event: clickEvent) => {
+const SearchBar: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
+  const handleLocationPress = (event: clickEvent) => {
     event.preventDefault();
-    console.log("Handle location press");
-  }, []);
+    showLocation();
+  };
 
-  const handleGuestsPress = useCallback((event: clickEvent) => {
+  const handleGuestsPress = (event: clickEvent) => {
     event.preventDefault();
-    console.log("Handle guests press");
-  }, []);
+    showGuests();
+  };
 
   let searchBar: JSX.Element = (
     <nav className="nav-bar">

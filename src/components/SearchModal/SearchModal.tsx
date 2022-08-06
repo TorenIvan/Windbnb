@@ -4,10 +4,16 @@ import "./SearchModal.scss";
 interface IProps {
   showLocations: boolean;
   showGuests: boolean;
+  cancelModal: () => void;
 }
 
-const Search: FC<IProps> = ({ showLocations, showGuests }): JSX.Element | null => {
-  const isVisible: boolean = (showLocations || showGuests);
+const Search: FC<IProps> = (props): JSX.Element | null => {
+  const { showLocations, showGuests, cancelModal } = props;
+  const isVisible: boolean = showLocations || showGuests;
+
+  const pressCancel = () => {
+    cancelModal();
+  }
 
   return (
     <div className={`overlay ${isVisible ? "show" : ""}`}>
