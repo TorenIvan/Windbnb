@@ -37,13 +37,14 @@ $small: 924px;
 
 .search-bar-open {
   border: #{$border};
-  // max-height: 55px;
+  max-height: 65px;
   border-radius: 16px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 80%;
+  max-width: 1800px;
   box-shadow: 2px 2px 1px var(--almostWhiteBorder);
 
   @media screen and (max-width: $small) {
@@ -64,6 +65,8 @@ $small: 924px;
 }
 
 .item-bar :not(.editable) {
+  display: flex;
+  flex: .8;
   justify-content: center;
 }
 
@@ -71,6 +74,7 @@ $small: 924px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: flex-start;
   margin-left: 2em;
 }
 
@@ -90,6 +94,28 @@ $small: 924px;
   font-weight: 400;
   font-size: 1ch;
   line-height: .8ch;
+}
+
+#search-icon {
+  box-sizing: border-box;
+}
+
+#search-icon>button {
+  width: 80%;
+  max-width: 200px;
+  background-color: #EB5757;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+
+#search-icon>button>p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1ch;
+  line-height: 18px;
+  color: #F2F2F2;
 }
 
 #random-item {

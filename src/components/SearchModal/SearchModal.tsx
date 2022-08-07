@@ -7,13 +7,13 @@ interface IProps {
   cancelModal: () => void;
 }
 
-const Search: FC<IProps> = (props): JSX.Element | null => {
+const Search: FC<IProps> = (props): JSX.Element => {
   const { showLocations, showGuests, cancelModal } = props;
   const isVisible: boolean = showLocations || showGuests;
 
   const pressCancel = () => {
     cancelModal();
-  }
+  };
 
   return (
     <div className={`overlay ${isVisible ? "show" : ""}`}>
