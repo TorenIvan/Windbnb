@@ -19,13 +19,13 @@ const Search: FC<IProps> = (props): JSX.Element => {
     <div className={`overlay ${isVisible ? "show" : ""}`}>
       <div className="search-container">
         <div className="search-bar-open">
-          <div className="item-bar editable" id="location-bar">
+          <div className="item-bar editable">
             <div className="item-bar-text">
               <p className="title"> Location</p>
               <p className="choice"> Helsinki, Finland</p>
             </div>
           </div>
-          <div className="item-bar editable" id="guests-bar">
+          <div className="item-bar editable">
             <div className="item-bar-text">
               <p className="title">Guests</p>
               <p className="choice">Add guests</p>
@@ -38,30 +38,25 @@ const Search: FC<IProps> = (props): JSX.Element => {
           </div>
         </div>
 
-        <div className="search-bar-open">
-          <div className="item-bar editable" id="location-bar">
+        <div className="search-bar-items">
+          <div className="item-bar editable">
             <div className="item-bar-text">
-              <p className="title"> Location</p>
-              <p className="choice"> Helsinki, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Turku, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Oulu, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland</p>
             </div>
           </div>
-          <div className="item-bar editable" id="guests-bar">
+          <div className="item-bar editable">
             <div className="item-bar-text">
-              <p className="title">Guests</p>
-              <p className="choice">Add guests</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Turku, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Oulu, Finland</p>
+              <p className="multiple-choice">&#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland</p>
             </div>
           </div>
-          <div className="item-bar" id="search-icon">
-            <button>
-              <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
-            </button>
-          </div>
+          <div className="item-bar" id="search-icon" />
         </div>
-        {/* <div className="search-items">
-          <div id="location-items"></div>
-          <div id="guests-items"></div>
-          <div id="search-items"></div>
-        </div> */}
       </div>
     </div>
   );

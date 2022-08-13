@@ -2,6 +2,20 @@ $border: 1px solid var(--almostWhiteBorder);
 $medium: 1200px;
 $small: 924px;
 
+.global-search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 1800px;
+
+  @media screen and (max-width: $small) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .overlay {
   position: fixed;
   background-color: var(--searchModal);
@@ -36,21 +50,11 @@ $small: 924px;
 }
 
 .search-bar-open {
-  border: #{$border};
+  @extend .global-search-bar;
   max-height: 65px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  max-width: 1800px;
   box-shadow: 2px 2px 1px var(--almostWhiteBorder);
-
-  @media screen and (max-width: $small) {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
+  border: #{$border};
+  border-radius: 16px;
 }
 
 .item-bar {
@@ -80,7 +84,6 @@ $small: 924px;
 
 .item-bar-text p {
   color: var(--text);
-  font-style: normal;
 }
 
 .title {
@@ -88,12 +91,14 @@ $small: 924px;
   font-size: .8ch;
   line-height: 1ch;
   text-transform: uppercase;
+  font-style: normal;
 }
 
 .choice {
   font-weight: 400;
   font-size: 1ch;
   line-height: .8ch;
+  font-style: normal;
 }
 
 #search-icon {
@@ -111,19 +116,20 @@ $small: 924px;
 
 
 #search-icon>button>p {
-  font-family: FontAwesome;
+  font-family: Arial, Helvetica, sans-serif, FontAwesome;
   font-style: normal;
-  font-weight: 700;
-  font-size: 1.2ch;
+  font-weight: 600;
+  font-size: 1.1ch;
   line-height: 18px;
   color: #F2F2F2;
 }
 
-// #search-fa{
-//   text-align: center;
-//   background-color: green;
-// }
+.search-bar-items {
+  @extend .global-search-bar;
+  margin-top: .5em;
+}
 
-#random-item {
-  flex: 2;
+.multiple-choice {
+  @extend .choice;
+  font-family: Arial, Helvetica, sans-serif, FontAwesome;
 }
