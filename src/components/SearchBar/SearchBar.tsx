@@ -8,6 +8,8 @@ type clickEvent = React.MouseEvent<HTMLButtonElement>;
 interface IProps {
   showLocation: () => void;
   showGuests: () => void;
+  location: null | string;
+  guests: null | string;
 }
 
 const SearchBar: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
