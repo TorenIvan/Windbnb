@@ -1,5 +1,5 @@
-import React, { useCallback, FC } from "react";
-import "./SearchBar.scss";
+import React, { FC } from "react";
+import "./InfoView.scss";
 import Logo from "../../logo.png";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -8,11 +8,11 @@ type clickEvent = React.MouseEvent<HTMLButtonElement>;
 interface IProps {
   showLocation: () => void;
   showGuests: () => void;
-  location: null | string;
-  guests: null | string;
+  location: string | null;
+  guests: string | null;
 }
 
-const SearchBar: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
+const InfoView: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
   const handleLocationPress = (event: clickEvent) => {
     event.preventDefault();
     showLocation();
@@ -23,7 +23,7 @@ const SearchBar: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
     showGuests();
   };
 
-  let searchBar: JSX.Element = (
+  return (
     <nav className="nav-bar">
       <div id="icon-container">
         <img id="logo" src={Logo} alt="logo" />
@@ -47,8 +47,6 @@ const SearchBar: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
       </div>
     </nav>
   );
-
-  return searchBar;
 };
 
-export default SearchBar;
+export default InfoView;

@@ -1,22 +1,16 @@
 import "./App.scss";
-import SearchBar from "./components/SearchBar/SearchBar";
+import InfoView from "./components/InfoView/InfoView";
 import InfoBar from "./components/InfoBar/InfoBar";
-import SearchModal from "./components/SearchModal/SearchModal";
+import Modal from "./components/Modal/Modal";
+import SearchItem from "./components/SearchItem/SearchItem";
+import EditLocation from "./components/EditLocation/EditLocation";
+import EditGuests from "./components/EditGuests/EditGuests";
 import { FC, useState, memo } from "react";
 import { SearchItemType } from "./utils/Constants";
-
-type EditInfo = {
-  editLocation: boolean;
-  editGuests: boolean;
-};
 
 const App: FC = (): JSX.Element => {
   const [showLocation, setShowLocation] = useState<boolean>(false);
   const [showGuests, setShowGuests] = useState<boolean>(false);
-  const [editInfo, setEditInfo] = useState<EditInfo>({
-    editLocation: false,
-    editGuests: false,
-  });
   const [location, setLocation] = useState<string | null>(null);
   const [previousLocation, setPreviousLocation] = useState<string | null>(null);
   const [guests, setGuests] = useState<string | null>(null);
@@ -48,6 +42,8 @@ const App: FC = (): JSX.Element => {
   const searchPlaces = () => {
     setPreviousLocation(location);
     setPreviousGuests(guests ?? null);
+    setShowGuests(false);
+    setShowLocation(false);
     /**
      * Set key attribute for re-render container
      */
@@ -58,16 +54,32 @@ const App: FC = (): JSX.Element => {
   return (
     <>
       <Modal isVisible={isModalVisible} cancelModal={cancelModal}>
-        <ModalSearchBar search={searchPlaces}>
-          <ModalSearchBarItem title={SearchItemType.location} data={location} />
-          <ModalSearchBarItem title={SearchItemType.guests} data={"guests"} />
-        </ModalSearchBar>
-        <SearchLocation isVisible={showLocation} modifyLocation={modifyLocation} />
-        <SearchGuests isVisible={showGuests} modifyGuests={modifyGuests} />
+        <div className="search-bar-open">
+          <SearchItem
+            title={SearchItemType.location}
+            content={location ?? "Helsinki"}
+            editable={showLocation}
+          />
+          <SearchItem
+            title={SearchItemType.guests}
+            content={"guests"}
+            editable={showGuests}
+          />
+          <div className="item-bar" id="search-icon">
+            <button onSubmit={searchPlaces}>
+              <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
+            </button>
+          </div>
+        </div>
+        <div className="search-edit">
+          <EditLocation isVisible={showLocation} modifyLocation={modifyLocation} />
+          <EditGuests isVisible={showGuests} modifyGuests={modifyGuests} />
+          <div className="item-bar" id="search-icon" />
+        </div>
       </Modal>
       <div className="App">
         <header>
-          <SearchBar
+          <InfoView
             showLocation={modifyShowLocation}
             showGuests={modifyShowGuests}
             location={location}
