@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import "./InfoView.scss";
 import Logo from "../../logo.png";
 import "font-awesome/css/font-awesome.min.css";
 

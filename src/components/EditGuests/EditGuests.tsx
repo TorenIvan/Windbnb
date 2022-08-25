@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element | null => {
-  if(isVisible) return null;
+  if (isVisible) return null;
   return (
     <div className="item-bar editable">
       <div className="item-bar-text">

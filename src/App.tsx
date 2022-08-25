@@ -54,28 +54,30 @@ const App: FC = (): JSX.Element => {
   return (
     <>
       <Modal isVisible={isModalVisible} cancelModal={cancelModal}>
-        <div className="search-bar-open">
-          <SearchItem
-            title={SearchItemType.location}
-            content={location ?? "Helsinki"}
-            editable={showLocation}
-          />
-          <SearchItem
-            title={SearchItemType.guests}
-            content={"guests"}
-            editable={showGuests}
-          />
-          <div className="item-bar" id="search-icon">
-            <button onSubmit={searchPlaces}>
-              <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
-            </button>
+        <>
+          <div className="search-bar-open">
+            <SearchItem
+              title={SearchItemType.location}
+              content={location ?? "Helsinki"}
+              editable={showLocation}
+            />
+            <SearchItem
+              title={SearchItemType.guests}
+              content={"guests"}
+              editable={showGuests}
+            />
+            <div className="item-bar" id="search-icon">
+              <button onSubmit={searchPlaces}>
+                <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="search-edit">
-          <EditLocation isVisible={showLocation} modifyLocation={modifyLocation} />
-          <EditGuests isVisible={showGuests} modifyGuests={modifyGuests} />
-          <div className="item-bar" id="search-icon" />
-        </div>
+          <div className="search-edit">
+            <EditLocation isVisible={showLocation} modifyLocation={modifyLocation} />
+            <EditGuests isVisible={showGuests} modifyGuests={modifyGuests} />
+            <div className="item-bar" id="search-icon" />
+          </div>
+        </>
       </Modal>
       <div className="App">
         <header>

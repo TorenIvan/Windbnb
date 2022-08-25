@@ -1,5 +1,4 @@
 import React from "react";
-import "./InfoBar.scss";
 
 const InfoBar = () => {
   return (
