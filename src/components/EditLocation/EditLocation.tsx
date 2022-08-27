@@ -11,18 +11,18 @@ const EditLocation: FC<IProps> = ({ isVisible, modifyLocation }): JSX.Element =>
   if (isVisible)
     data = (
       <div className={editLocationStyles.itembarText}>
-        <p className={editLocationStyles.multipleChoice}>
+        <button className={editLocationStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland
-        </p>
-        <p className={editLocationStyles.multipleChoice}>
+        </button>
+        <button className={editLocationStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Turku, Finland
-        </p>
-        <p className={editLocationStyles.multipleChoice}>
+        </button>
+        <button className={editLocationStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Oulu, Finland
-        </p>
-        <p className={editLocationStyles.multipleChoice}>
+        </button>
+        <button className={editLocationStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland
-        </p>
+        </button>
       </div>
     );
   return <div className="item-bar editable">{data}</div>;

@@ -6,23 +6,23 @@ interface IProps {
   modifyGuests: (guests: string) => void;
 }
 
-const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element | null => {
+const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element => {
   let data: JSX.Element | null = null;
   if (isVisible)
     data = (
       <div className={editGuestsStyles.itembarText}>
-        <p className={editGuestsStyles.multipleChoice}>
+        <button className={editGuestsStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland
-        </p>
-        <p className={editGuestsStyles.multipleChoice}>
+        </button>
+        <button className={editGuestsStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Turku, Finland
-        </p>
-        <p className={editGuestsStyles.multipleChoice}>
+        </button>
+        <button className={editGuestsStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Oulu, Finland
-        </p>
-        <p className={editGuestsStyles.multipleChoice}>
+        </button>
+        <button className={editGuestsStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland
-        </p>
+        </button>
       </div>
     );
   return <div className="item-bar editable">{data}</div>;
