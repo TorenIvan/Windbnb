@@ -76,6 +76,16 @@ footer {
   justify-content: center;
 }
 
+.editable {
+  justify-content: flex-start;
+}
+
+.item-bar :not(.editable) {
+  display: flex;
+  flex: .8;
+  justify-content: center;
+}
+
 .search-edit {
   @extend .global-search-bar;
   margin-top: .5em;

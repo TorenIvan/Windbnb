@@ -9,7 +9,7 @@ interface IProps {
 
 const SearchItem: FC<IProps> = ({ title, content, editable }): JSX.Element => {
   return (
-    <div className={`"item-bar" ${searchItemStyles.editable}`}>
+    <div className="item-bar editable">
       <div className={searchItemStyles.itembarText}>
         <p className={searchItemStyles.title}> {title}</p>
         <p className={searchItemStyles.choice}> {content}</p>

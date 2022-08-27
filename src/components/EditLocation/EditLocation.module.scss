@@ -10,17 +10,10 @@
   color: var(--text);
 }
 
-.title {
-  font-weight: 800;
-  font-size: .8ch;
-  line-height: 1ch;
-  text-transform: uppercase;
-  font-style: normal;
-}
-
-.choice {
+.multipleChoice {
   font-weight: 400;
   font-size: 1ch;
   line-height: .8ch;
   font-style: normal;
+  font-family: Arial, Helvetica, sans-serif, FontAwesome;
 }
