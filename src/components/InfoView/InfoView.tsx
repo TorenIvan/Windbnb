@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Logo from "../../logo.png";
 import "font-awesome/css/font-awesome.min.css";
+import infoViewStyles from "./InfoView.module.scss";
 
 type clickEvent = React.MouseEvent<HTMLButtonElement>;
 
@@ -23,28 +24,31 @@ const InfoView: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
   };
 
   return (
-    <nav className="nav-bar">
-      <div id="icon-container">
-        <img id="logo" src={Logo} alt="logo" />
+    <div className={infoViewStyles.navBar}>
+      <div id={infoViewStyles["icon-container"]}>
+        <img id={infoViewStyles["logo"]} src={Logo} alt="logo" />
       </div>
-      <div className="search-bar">
-        <div id="location-item" className="closed-item">
+      <div className={infoViewStyles.searchBar}>
+        <div id={infoViewStyles["location-item"]} className={infoViewStyles.closedItem}>
           <button onClick={handleLocationPress}>
             <p>Helsinki, Finland</p>
           </button>
         </div>
-        <div id="guests-item" className="closed-item">
+        <div id={infoViewStyles["guests-item"]} className={infoViewStyles.closedItem}>
           <button onClick={handleGuestsPress}>
             <p>Add guests</p>
           </button>
         </div>
-        <div id="search-icon-item" className="closed-item">
+        <div
+          id={infoViewStyles["search-icon-item"]}
+          className={infoViewStyles.closedItem}
+        >
           <button onClick={handleLocationPress}>
             <i className="fa fa-search" />
           </button>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

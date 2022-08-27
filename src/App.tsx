@@ -1,6 +1,6 @@
 import "./App.scss";
 import InfoView from "./components/InfoView/InfoView";
-import InfoBar from "./components/InfoBar/InfoBar";
+import InfoLine from "./components/InfoLine/InfoLine";
 import Modal from "./components/Modal/Modal";
 import SearchItem from "./components/SearchItem/SearchItem";
 import EditLocation from "./components/EditLocation/EditLocation";
@@ -87,7 +87,7 @@ const App: FC = (): JSX.Element => {
             location={location}
             guests={guests}
           />
-          <InfoBar />
+          <InfoLine />
         </header>
         <main></main>
         <footer></footer>
