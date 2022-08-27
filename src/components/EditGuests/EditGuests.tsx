@@ -7,9 +7,9 @@ interface IProps {
 }
 
 const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element | null => {
-  if (isVisible) return null;
-  return (
-    <div className="item-bar editable">
+  let data: JSX.Element | null = null;
+  if (isVisible)
+    data = (
       <div className={editGuestsStyles.itembarText}>
         <p className={editGuestsStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland
@@ -24,8 +24,8 @@ const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element | null
           &#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland
         </p>
       </div>
-    </div>
-  );
+    );
+  return <div className="item-bar editable">{data}</div>;
 };
 
 export default EditGuests;

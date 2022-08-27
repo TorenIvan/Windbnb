@@ -6,10 +6,10 @@ interface IProps {
   modifyLocation: (location: string) => void;
 }
 
-const EditLocation: FC<IProps> = ({ isVisible, modifyLocation }): JSX.Element | null => {
-  if (isVisible) return null;
-  return (
-    <div className="item-bar editable">
+const EditLocation: FC<IProps> = ({ isVisible, modifyLocation }): JSX.Element => {
+  let data: JSX.Element | null = null;
+  if (isVisible)
+    data = (
       <div className={editLocationStyles.itembarText}>
         <p className={editLocationStyles.multipleChoice}>
           &#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland
@@ -24,8 +24,8 @@ const EditLocation: FC<IProps> = ({ isVisible, modifyLocation }): JSX.Element | 
           &#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland
         </p>
       </div>
-    </div>
-  );
+    );
+  return <div className="item-bar editable">{data}</div>;
 };
 
 export default EditLocation;
