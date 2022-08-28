@@ -13,7 +13,7 @@ const Search: FC<IProps> = (props): JSX.Element => {
 
   return (
     <div className={`${modalStyles.overlay} ${isVisible ? modalStyles.show : ""}`}>
-      <div className={modalStyles.modalContainer}>
+      <div className={`${modalStyles.modalContainer} ${isVisible ? modalStyles.show : ""}`}>
         <div className={modalStyles.searchContainer}>{children}</div>
         <div className={modalStyles.closeModal}>
           <button onClick={cancelModal}>
