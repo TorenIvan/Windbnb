@@ -32,6 +32,11 @@ const App: FC = (): JSX.Element => {
     setShowGuests(prevShowGuests => !prevShowGuests);
   };
 
+  const modifyShowInfo = (showLocation: boolean, showGuests: boolean) => {
+    setShowLocation(showLocation);
+    setShowGuests(showGuests);
+  };
+
   const cancelModal = () => {
     setLocation(previousLocation);
     setGuests(previousGuests ?? null);
@@ -59,12 +64,14 @@ const App: FC = (): JSX.Element => {
             <SearchItem
               title={SearchItemType.location}
               content={location ?? "Helsinki"}
-              editable={showLocation}
+              isItBeingProcessed={showLocation}
+              onClickType={modifyShowInfo}
             />
             <SearchItem
               title={SearchItemType.guests}
               content={"guests"}
-              editable={showGuests}
+              isItBeingProcessed={showGuests}
+              onClickType={modifyShowInfo}
             />
             <div className="item-bar" id="search-icon">
               <button onSubmit={searchPlaces}>
