@@ -11,18 +11,35 @@ const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element => {
   if (isVisible)
     data = (
       <div className={editGuestsStyles.itembarText}>
-        <button className={editGuestsStyles.multipleChoice}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland
-        </button>
-        <button className={editGuestsStyles.multipleChoice}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Turku, Finland
-        </button>
-        <button className={editGuestsStyles.multipleChoice}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Oulu, Finland
-        </button>
-        <button className={editGuestsStyles.multipleChoice}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland
-        </button>
+        <div className={editGuestsStyles.guestsCategory}>
+          <article>
+            <span className={editGuestsStyles.guestsCategoryTitle}>Adults</span>
+            <span className={editGuestsStyles.guestsCategoryClarification}>
+              Age 13 or above
+            </span>
+          </article>
+          <div
+            className={`${editGuestsStyles.buttonContainer} ${editGuestsStyles.withDivider}`}
+          >
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
+
+        <div className={editGuestsStyles.guestsCategory}>
+          <article>
+            <span className={editGuestsStyles.guestsCategoryTitle}>Children</span>
+            <span className={editGuestsStyles.guestsCategoryClarification}>
+              Ages 2-12
+            </span>
+          </article>
+          <div className={editGuestsStyles.buttonContainer}>
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
+          </div>
+        </div>
       </div>
     );
   return <div className="item-bar editable">{data}</div>;
