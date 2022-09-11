@@ -1,9 +1,10 @@
 import React, { FC } from "react";
+import { Guests } from "../../utils/Types";
 import editGuestsStyles from "./EditGuests.module.scss";
 
 interface IProps {
   isVisible: boolean;
-  modifyGuests: (guests: string) => void;
+  modifyGuests: (guests: Guests) => void;
 }
 
 const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element => {
