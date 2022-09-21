@@ -9,7 +9,7 @@ import {
   InitialAdults,
   InitialChildren,
 } from "./utils/Constants";
-import { ShowModal, UserChoice, Guests } from "./utils/Types";
+import { ModalSearchType, UserChoice, Guests } from "./utils/Types";
 
 const App: FC = (): JSX.Element => {
   const [userChoice, setUserChoice] = useState<UserChoice>({
@@ -19,11 +19,11 @@ const App: FC = (): JSX.Element => {
       children: InitialChildren,
     },
   });
-  const [modalVisibility, setModalVisibility] = useState<ShowModal>(
+  const [modalVisibility, setModalVisibility] = useState<ModalSearchType>(
     ModalVisibility.Hidden
   );
 
-  const updateModalVisibility = (visibility: ShowModal) => {
+  const updateModalVisibility = (visibility: ModalSearchType) => {
     setModalVisibility(visibility);
   };
 

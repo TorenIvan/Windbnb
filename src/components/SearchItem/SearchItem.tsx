@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import { SearchItemType } from "../../utils/Constants";
+import { ModalSearchType } from "../../utils/Types";
 import searchItemStyles from "./SearchItem.module.scss";
 
 interface IProps {
   title: string;
   content: string;
   isItBeingProcessed: boolean;
-  onClickType: (showLocation: boolean, showGuests: boolean) => void;
+  onClickType: (showInfo: ModalSearchType) => void;
 }
 
 const SearchItem: FC<IProps> = (props): JSX.Element => {
@@ -15,7 +16,7 @@ const SearchItem: FC<IProps> = (props): JSX.Element => {
   const isGuests = title === SearchItemType.guests;
 
   const handleClick = () => {
-    onClickType(isLocation, isGuests);
+    onClickType(showInfo);
   };
 
   return (

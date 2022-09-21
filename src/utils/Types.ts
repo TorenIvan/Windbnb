@@ -5,12 +5,7 @@ export type Guests = {
   children: number;
 };
 
-export type ShowModal = ModalVisibility; 
-
-export type ShowModalInfo = {
-  showLocation: boolean;
-  showGuests: boolean;
-}
+export type ModalSearchType = ModalVisibility; 
 
 export type UserChoice = {
   location: string;

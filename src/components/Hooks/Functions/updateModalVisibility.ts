@@ -1,5 +1,5 @@
-import { ModalVisibility } from "../../utils/Constants";
-import { Guests } from "../../utils/Types";
+import { ModalVisibility } from "../../../utils/Constants";
+import { Guests } from "../../../utils/Types";
 
 interface IProps {
   location: string;
@@ -13,7 +13,7 @@ type ModalLogic = {
   searchPlace: () => void;
 };
 
-const useUpdateModalLogic = (props: IProps): ModalLogic => {
+const updateModalVisibility = (props: IProps): ModalLogic => {
   const { location, guests, setModalVisibility, search } = props;
 
   const exitModal = () => {
@@ -31,4 +31,4 @@ const useUpdateModalLogic = (props: IProps): ModalLogic => {
   };
 };
 
-export default useUpdateModalLogic;
+export default updateModalVisibility;

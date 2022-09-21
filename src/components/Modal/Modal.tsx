@@ -1,57 +1,43 @@
-import React, { FC, memo, useState } from "react";
+import { FC, memo } from "react";
 import modalStyles from "./Modal.module.scss";
 import { ModalVisibility, SearchItemType } from "../../utils/Constants";
-import { Guests, UserChoice, ShowModal, ShowModalInfo } from "../../utils/Types";
+import { Guests, UserChoice, ModalSearchType } from "../../utils/Types";
 import SearchItem from "../SearchItem/SearchItem";
 import EditLocation from "../EditLocation/EditLocation";
 import EditGuests from "../EditGuests/EditGuests";
+import { showSearchType, updateModalVisibility, updateSearchTerms } from "../Hooks";
 
-interface IProps {
-  key: ShowModal;
-  setModalVisibility: (visibility: ShowModal) => void;
+interface IModalProps {
+  key: ModalSearchType;
+  setModalVisibility: (visibility: ModalSearchType) => void;
   userChoice: UserChoice;
   search: (location: string, guests: Guests) => void;
 }
 
-const Search: FC<IProps> = (props): JSX.Element => {
+/**
+ * 
+ */
+const Modal: FC<IModalProps> = (props): JSX.Element => {
   const { key, setModalVisibility, userChoice, search } = props;
-  const editLocation = key === ModalVisibility.EditLocation;
-  const editGuests = key === ModalVisibility.EditGuests;
-  const { location, guests } = userChoice;
+  const modalSearchType = key;
 
-  const [showInfo, setShowInfo] = useState<ShowModalInfo>({
-    showLocation: editLocation,
-    showGuests: editGuests,
+  const { searchType, showModalSearchType } = showSearchType(modalSearchType);
+
+  const { location, guests, modifyLocation, modifyGuests } = updateSearchTerms(
+    userChoice.location,
+    userChoice.guests
+  );
+
+  const { searchPlace, exitModal } = updateModalVisibility({
+    location,
+    guests,
+    setModalVisibility,
+    search,
   });
-  const [tempLocation, setTempLocation] = useState<string>(location);
-  const [tempGuests, setTempGuests] = useState<Guests>(guests);
 
-  const modifyShowInfo = (showLocation: boolean, showGuests: boolean) => {
-    setShowInfo({
-      showLocation: showLocation,
-      showGuests: showGuests,
-    });
-  };
-
-  const modifyTempLocation = (location: string) => {
-    setTempLocation(location);
-  };
-
-  const modifyTempGuests = (guests: Guests) => {
-    setTempGuests(guests);
-  };
-
-  const exitModal = () => {
-    setModalVisibility(ModalVisibility.Hidden);
-  };
-
-  const searchPlace = () => {
-    search(tempLocation, tempGuests);
-    exitModal();
-  };
-
-  const { showLocation, showGuests } = showInfo;
-  const isVisible = showLocation || showGuests;
+  const editLocation = searchType === ModalVisibility.EditLocation;
+  const editGuests = searchType === ModalVisibility.EditGuests;
+  const isVisible = editLocation || editGuests;
   return (
     <div className={`${modalStyles.overlay} ${isVisible ? modalStyles.show : ""}`}>
       <div
@@ -62,14 +48,14 @@ const Search: FC<IProps> = (props): JSX.Element => {
             <SearchItem
               title={SearchItemType.location}
               content={location}
-              isItBeingProcessed={showLocation}
-              onClickType={modifyShowInfo}
+              isItBeingProcessed={editLocation}
+              onClickType={showModalSearchType}
             />
             <SearchItem
               title={SearchItemType.guests}
               content={"guests"}
-              isItBeingProcessed={showGuests}
-              onClickType={modifyShowInfo}
+              isItBeingProcessed={editGuests}
+              onClickType={showModalSearchType}
             />
             <div className="item-bar" id="search-icon">
               <button onSubmit={searchPlace}>
@@ -78,8 +64,8 @@ const Search: FC<IProps> = (props): JSX.Element => {
             </div>
           </div>
           <div className="search-edit">
-            <EditLocation isVisible={showLocation} modifyLocation={modifyTempLocation} />
-            <EditGuests isVisible={showGuests} modifyGuests={modifyTempGuests} />
+            <EditLocation isVisible={editLocation} modifyLocation={modifyLocation} />
+            <EditGuests isVisible={editGuests} modifyGuests={modifyGuests} />
             <div className="item-bar" id="search-icon" />
           </div>
         </div>
@@ -93,4 +79,4 @@ const Search: FC<IProps> = (props): JSX.Element => {
   );
 };
 
-export default memo(Search);
+export default memo(Modal);
