@@ -11,15 +11,14 @@ interface IModalProps {
   key: ModalVisibility;
   modalVisibilityType: ModalVisibility;
   userChoice: UserChoice;
-  setModalVisibility: (visibility: ModalVisibility) => void;
-  search: (location: string, guests: Guests) => void;
+  search: (location: string, guests: Guests, updateUserChoice?: boolean) => void;
 }
 
 /**
  *
  */
 const Modal: FC<IModalProps> = (props): JSX.Element => {
-  const { modalVisibilityType, userChoice, setModalVisibility, search } = props;
+  const { modalVisibilityType, userChoice, search } = props;
   const modalSearchType = modalVisibilityType;
 
   const [searchType, updateSearchType] = useModalVisibility(modalSearchType);
@@ -27,61 +26,58 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
   const [guests, modifyGuests] = useGuestsInfo(userChoice.guests);
 
   const exitModal = () => {
-    setModalVisibility(ModalVisibility.Hidden);
+    search(location, guests, false);
   };
 
   const searchPlace = () => {
     search(location, guests);
-    exitModal();
   };
 
   const searchingLocation = searchType === ModalVisibility.EditLocation;
   const searchingGuests = searchType === ModalVisibility.EditGuests;
   const isModalVisible = searchingLocation || searchingGuests;
-  console.log(isModalVisible, "isModalVisible");
-
   return (
-      <div
-        className={`${modalStyles.modalContainer} ${
-          isModalVisible ? modalStyles.show : ""
-        }`}
-      >
-        <div className={modalStyles.searchContainer}>
-          <div className="search-bar-open">
-            <SearchItem
-              title={SearchItemType.location}
-              content={location}
-              isItBeingProcessed={searchingLocation}
-              onClickType={updateSearchType}
-            />
-            <SearchItem
-              title={SearchItemType.guests}
-              content={"guests"}
-              isItBeingProcessed={searchingGuests}
-              onClickType={updateSearchType}
-            />
-            <div className="item-bar" id="search-icon">
-              <button onSubmit={searchPlace}>
-                <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
-              </button>
-            </div>
-          </div>
-          <div className="search-edit">
-            <EditLocation isVisible={searchingLocation} modifyLocation={modifyLocation} />
-            <EditGuests
-              isVisible={searchingGuests}
-              guests={guests}
-              modifyGuests={modifyGuests}
-            />
-            <div className="item-bar" id="search-icon" />
+    <div
+      className={`${modalStyles.modalContainer} ${
+        isModalVisible ? modalStyles.show : ""
+      }`}
+    >
+      <div className={modalStyles.searchContainer}>
+        <div className="search-bar-open">
+          <SearchItem
+            title={SearchItemType.location}
+            content={location}
+            isItBeingProcessed={searchingLocation}
+            onClickType={updateSearchType}
+          />
+          <SearchItem
+            title={SearchItemType.guests}
+            content={"guests"}
+            isItBeingProcessed={searchingGuests}
+            onClickType={updateSearchType}
+          />
+          <div className="item-bar" id="search-icon">
+            <button onSubmit={searchPlace}>
+              <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
+            </button>
           </div>
         </div>
-        <div className={modalStyles.closeModal}>
-          <button onClick={exitModal}>
-            <p>x</p>
-          </button>
+        <div className="search-edit">
+          <EditLocation isVisible={searchingLocation} modifyLocation={modifyLocation} />
+          <EditGuests
+            isVisible={searchingGuests}
+            guests={guests}
+            modifyGuests={modifyGuests}
+          />
+          <div className="item-bar" id="search-icon" />
         </div>
       </div>
+      <div className={modalStyles.closeModal}>
+        <button onClick={exitModal}>
+          <p>x</p>
+        </button>
+      </div>
+    </div>
   );
 };
 

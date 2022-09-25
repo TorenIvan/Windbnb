@@ -8,12 +8,9 @@ type ReturnDataType = [
 
 const useModalVisibility = (type: ModalVisibility): ReturnDataType => {
   const [searchType, setSearchType] = useState<ModalVisibility>(type);
-  console.log("searchTypeHere: ", searchType);
-  
 
   const updateSearchType = useCallback(
     (type: ModalVisibility) => {
-      console.count("Mpika updateSearchType");
       setSearchType(type);
     },
     [type]
