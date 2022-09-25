@@ -23,12 +23,13 @@ const App: FC = (): JSX.Element => {
     ModalVisibility.Hidden
   );
 
-  const searchPlaces = (location: string, guests: Guests) => {
-    updateLocation(location);
-    updateGuests(guests);
+  const searchPlaces = (location: string, guests: Guests, updateUserChoice = false) => {
+    if (updateUserChoice === true) {
+      updateLocation(location);
+      updateGuests(guests);
+    }
+    updateModalSearchType(ModalVisibility.Hidden);
   };
-
-  console.log(modalSearchType);
 
   const userChoice = { location: location, guests: guests };
   const totalGuests: number = guests.adults + guests.children;
@@ -40,7 +41,6 @@ const App: FC = (): JSX.Element => {
           key={modalSearchType}
           modalVisibilityType={modalSearchType}
           userChoice={userChoice}
-          setModalVisibility={updateModalSearchType}
           search={searchPlaces}
         />
       </div>
