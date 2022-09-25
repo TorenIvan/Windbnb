@@ -3,6 +3,7 @@ import modalStyles from "./components/Modal/Modal.module.scss";
 import InfoView from "./components/InfoView/InfoView";
 import InfoLine from "./components/InfoLine/InfoLine";
 import Modal from "./components/Modal/Modal";
+import { useGuestsInfo, useLocationInfo, useModalVisibility } from "./components/Hooks";
 import { FC } from "react";
 import {
   ModalVisibility,
@@ -11,7 +12,6 @@ import {
   InitialChildren,
 } from "./utils/Constants";
 import { Guests } from "./utils/Types";
-import { useGuestsInfo, useLocationInfo, useModalVisibility } from "./components/Hooks";
 
 const App: FC = (): JSX.Element => {
   const [location, updateLocation] = useLocationInfo(InitialPlace);
@@ -41,7 +41,7 @@ const App: FC = (): JSX.Element => {
           key={modalSearchType}
           modalVisibilityType={modalSearchType}
           userChoice={userChoice}
-          search={searchPlaces}
+          setSearchTerms={searchPlaces}
         />
       </div>
       <div className="App">

@@ -11,14 +11,14 @@ interface IModalProps {
   key: ModalVisibility;
   modalVisibilityType: ModalVisibility;
   userChoice: UserChoice;
-  search: (location: string, guests: Guests, updateUserChoice?: boolean) => void;
+  setSearchTerms: (location: string, guests: Guests, updateUserChoice?: boolean) => void;
 }
 
 /**
  *
  */
 const Modal: FC<IModalProps> = (props): JSX.Element => {
-  const { modalVisibilityType, userChoice, search } = props;
+  const { modalVisibilityType, userChoice, setSearchTerms } = props;
   const modalSearchType = modalVisibilityType;
 
   const [searchType, updateSearchType] = useModalVisibility(modalSearchType);
@@ -26,11 +26,11 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
   const [guests, modifyGuests] = useGuestsInfo(userChoice.guests);
 
   const exitModal = () => {
-    search(location, guests, false);
+    setSearchTerms(location, guests, false);
   };
 
   const searchPlace = () => {
-    search(location, guests);
+    setSearchTerms(location, guests);
   };
 
   const searchingLocation = searchType === ModalVisibility.EditLocation;
