@@ -1,54 +1,49 @@
-import React, { FC } from "react";
-import Logo from "../../logo.png";
-import "font-awesome/css/font-awesome.min.css";
-import infoViewStyles from "./InfoView.module.scss";
+import React, { FC, useCallback } from "react";
+import { ModalSearchType } from "../../utils/Types";
+import {
+  InitialAdults,
+  InitialChildren,
+  InitialGuestsTitle,
+  InitialLocationTitle,
+  InitialPlace,
+  ModalVisibility,
+} from "../../utils/Constants";
+import InfoViewComponent from "./InfoViewComponent";
 
 type clickEvent = React.MouseEvent<HTMLButtonElement>;
 
 interface IProps {
-  showLocation: () => void;
-  showGuests: () => void;
-  location: string | null;
-  guests: string | null;
+  setModalVisibility: (visibility: ModalSearchType) => void;
+  location: string;
+  totalGuests: number;
 }
 
-const InfoView: FC<IProps> = ({ showLocation, showGuests }): JSX.Element => {
-  const handleLocationPress = (event: clickEvent) => {
-    event.preventDefault();
-    showLocation();
-  };
+const InfoView: FC<IProps> = (props): JSX.Element => {
+  const { setModalVisibility, location, totalGuests } = props;
 
-  const handleGuestsPress = (event: clickEvent) => {
+  const handleLocationPress = useCallback((event: clickEvent) => {
     event.preventDefault();
-    showGuests();
-  };
+    setModalVisibility(ModalVisibility.EditLocation);
+  }, []);
+
+  const handleGuestsPress = useCallback((event: clickEvent) => {
+    event.preventDefault();
+    setModalVisibility(ModalVisibility.EditGuests);
+  }, []);
+
+  let locationTitle: string = location;
+  if (location === InitialPlace) locationTitle = InitialLocationTitle;
+
+  let guestsTitle: string = totalGuests.toString();
+  if (totalGuests === InitialAdults + InitialChildren) guestsTitle = InitialGuestsTitle;
 
   return (
-    <div className={infoViewStyles.navBar}>
-      <div id={infoViewStyles["icon-container"]}>
-        <img id={infoViewStyles["logo"]} src={Logo} alt="logo" />
-      </div>
-      <div className={infoViewStyles.searchBar}>
-        <div id={infoViewStyles["location-item"]} className={infoViewStyles.closedItem}>
-          <button onClick={handleLocationPress}>
-            <p>Helsinki, Finland</p>
-          </button>
-        </div>
-        <div id={infoViewStyles["guests-item"]} className={infoViewStyles.closedItem}>
-          <button onClick={handleGuestsPress}>
-            <p>Add guests</p>
-          </button>
-        </div>
-        <div
-          id={infoViewStyles["search-icon-item"]}
-          className={infoViewStyles.closedItem}
-        >
-          <button onClick={handleLocationPress}>
-            <i className="fa fa-search" />
-          </button>
-        </div>
-      </div>
-    </div>
+    <InfoViewComponent
+      locationTitle={locationTitle}
+      guestsTitle={guestsTitle}
+      handleLocationPress={handleLocationPress}
+      handleGuestsPress={handleGuestsPress}
+    />
   );
 };
 

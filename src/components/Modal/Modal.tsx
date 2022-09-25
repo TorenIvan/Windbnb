@@ -5,57 +5,58 @@ import { Guests, UserChoice, ModalSearchType } from "../../utils/Types";
 import SearchItem from "../SearchItem/SearchItem";
 import EditLocation from "../EditLocation/EditLocation";
 import EditGuests from "../EditGuests/EditGuests";
-import { showSearchType, updateModalVisibility, updateSearchTerms } from "../Hooks";
+import { useModalVisibility, useLocationInfo, useGuestsInfo } from "../Hooks";
 
 interface IModalProps {
   key: ModalSearchType;
-  setModalVisibility: (visibility: ModalSearchType) => void;
   userChoice: UserChoice;
+  setModalVisibility: (visibility: ModalSearchType) => void;
   search: (location: string, guests: Guests) => void;
 }
 
 /**
- * 
+ *
  */
 const Modal: FC<IModalProps> = (props): JSX.Element => {
-  const { key, setModalVisibility, userChoice, search } = props;
+  const { key, userChoice, setModalVisibility, search } = props;
   const modalSearchType = key;
 
-  const { searchType, showModalSearchType } = showSearchType(modalSearchType);
+  const [searchType, updateSearchType] = useModalVisibility(modalSearchType);
+  const [location, modifyLocation] = useLocationInfo(userChoice.location);
+  const [guests, modifyGuests] = useGuestsInfo(userChoice.guests);
 
-  const { location, guests, modifyLocation, modifyGuests } = updateSearchTerms(
-    userChoice.location,
-    userChoice.guests
-  );
+  const exitModal = () => {
+    setModalVisibility(ModalVisibility.Hidden);
+  };
 
-  const { searchPlace, exitModal } = updateModalVisibility({
-    location,
-    guests,
-    setModalVisibility,
-    search,
-  });
+  const searchPlace = () => {
+    search(location, guests);
+    exitModal();
+  };
 
-  const editLocation = searchType === ModalVisibility.EditLocation;
-  const editGuests = searchType === ModalVisibility.EditGuests;
-  const isVisible = editLocation || editGuests;
+  const searchingLocation = searchType === ModalVisibility.EditLocation;
+  const searchingGuests = searchType === ModalVisibility.EditGuests;
+  const isModalVisible = searchingLocation || searchingGuests;
   return (
-    <div className={`${modalStyles.overlay} ${isVisible ? modalStyles.show : ""}`}>
+    <div className={`${modalStyles.overlay} ${isModalVisible ? modalStyles.show : ""}`}>
       <div
-        className={`${modalStyles.modalContainer} ${isVisible ? modalStyles.show : ""}`}
+        className={`${modalStyles.modalContainer} ${
+          isModalVisible ? modalStyles.show : ""
+        }`}
       >
         <div className={modalStyles.searchContainer}>
           <div className="search-bar-open">
             <SearchItem
               title={SearchItemType.location}
               content={location}
-              isItBeingProcessed={editLocation}
-              onClickType={showModalSearchType}
+              isItBeingProcessed={searchingLocation}
+              onClickType={updateSearchType}
             />
             <SearchItem
               title={SearchItemType.guests}
               content={"guests"}
-              isItBeingProcessed={editGuests}
-              onClickType={showModalSearchType}
+              isItBeingProcessed={searchingGuests}
+              onClickType={updateSearchType}
             />
             <div className="item-bar" id="search-icon">
               <button onSubmit={searchPlace}>
@@ -64,8 +65,12 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
             </div>
           </div>
           <div className="search-edit">
-            <EditLocation isVisible={editLocation} modifyLocation={modifyLocation} />
-            <EditGuests isVisible={editGuests} modifyGuests={modifyGuests} />
+            <EditLocation isVisible={searchingLocation} modifyLocation={modifyLocation} />
+            <EditGuests
+              isVisible={searchingGuests}
+              guests={guests}
+              modifyGuests={modifyGuests}
+            />
             <div className="item-bar" id="search-icon" />
           </div>
         </div>

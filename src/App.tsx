@@ -2,55 +2,47 @@ import "./App.scss";
 import InfoView from "./components/InfoView/InfoView";
 import InfoLine from "./components/InfoLine/InfoLine";
 import Modal from "./components/Modal/Modal";
-import { FC, useState, memo } from "react";
+import { FC } from "react";
 import {
   ModalVisibility,
   InitialPlace,
   InitialAdults,
   InitialChildren,
 } from "./utils/Constants";
-import { ModalSearchType, UserChoice, Guests } from "./utils/Types";
+import { Guests } from "./utils/Types";
+import { useGuestsInfo, useLocationInfo, useModalVisibility } from "./components/Hooks";
 
 const App: FC = (): JSX.Element => {
-  const [userChoice, setUserChoice] = useState<UserChoice>({
-    location: InitialPlace,
-    guests: {
-      adults: InitialAdults,
-      children: InitialChildren,
-    },
+  const [location, updateLocation] = useLocationInfo(InitialPlace);
+  const [guests, updateGuests] = useGuestsInfo({
+    adults: InitialAdults,
+    children: InitialChildren,
   });
-  const [modalVisibility, setModalVisibility] = useState<ModalSearchType>(
+  const [modalSearchType, updateModalSearchType] = useModalVisibility(
     ModalVisibility.Hidden
   );
 
-  const updateModalVisibility = (visibility: ModalSearchType) => {
-    setModalVisibility(visibility);
-  };
-
   const searchPlaces = (location: string, guests: Guests) => {
-    const newUserChoice: UserChoice = {
-      location: location,
-      guests: guests,
-    };
-    setUserChoice(newUserChoice);
+    updateLocation(location);
+    updateGuests(guests);
   };
 
-  // calculateTotalGuests
+  const userChoice = { location: location, guests: guests };
+  const totalGuests: number = guests.adults + guests.children;
   return (
     <>
       <Modal
-        key={modalVisibility}
-        setModalVisibility={updateModalVisibility}
+        key={modalSearchType}
         userChoice={userChoice}
+        setModalVisibility={updateModalSearchType}
         search={searchPlaces}
       />
       <div className="App">
         <header>
           <InfoView
-            showLocation={modifyShowLocation}
-            showGuests={modifyShowGuests}
+            setModalVisibility={updateModalSearchType}
             location={location}
-            guests={guests}
+            totalGuests={totalGuests}
           />
           <InfoLine />
         </header>
@@ -61,4 +53,4 @@ const App: FC = (): JSX.Element => {
   );
 };
 
-export default memo(App);
+export default App;

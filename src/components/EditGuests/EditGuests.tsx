@@ -1,48 +1,34 @@
-import React, { FC } from "react";
+import { FC, useCallback } from "react";
 import { Guests } from "../../utils/Types";
-import editGuestsStyles from "./EditGuests.module.scss";
+import EditGuestsComponent from "./EditGuestsComponent";
 
 interface IProps {
   isVisible: boolean;
+  guests: Guests;
   modifyGuests: (guests: Guests) => void;
 }
 
-const EditGuests: FC<IProps> = ({ isVisible, modifyGuests }): JSX.Element => {
-  let data: JSX.Element | null = null;
-  if (isVisible)
-    data = (
-      <div className={editGuestsStyles.itembarText}>
-        <div className={editGuestsStyles.guestsCategory}>
-          <article>
-            <span className={editGuestsStyles.guestsCategoryTitle}>Adults</span>
-            <span className={editGuestsStyles.guestsCategoryClarification}>
-              Age 13 or above
-            </span>
-          </article>
-          <div
-            className={`${editGuestsStyles.buttonContainer} ${editGuestsStyles.withDivider}`}
-          >
-            <button>-</button>
-            <span>0</span>
-            <button>+</button>
-          </div>
-        </div>
+const EditGuests: FC<IProps> = ({ isVisible, guests, modifyGuests }): JSX.Element => {
+  const updateAdults = useCallback((adults: number) => {
+    const newGuests: Guests = { ...guests, adults: adults };
+    modifyGuests(newGuests);
+  }, []);
 
-        <div className={editGuestsStyles.guestsCategory}>
-          <article>
-            <span className={editGuestsStyles.guestsCategoryTitle}>Children</span>
-            <span className={editGuestsStyles.guestsCategoryClarification}>
-              Ages 2-12
-            </span>
-          </article>
-          <div className={editGuestsStyles.buttonContainer}>
-            <button>-</button>
-            <span>0</span>
-            <button>+</button>
-          </div>
-        </div>
-      </div>
+  const updateChildren = useCallback((children: number) => {
+    const newGuests: Guests = { ...guests, children: children };
+    modifyGuests(newGuests);
+  }, []);
+
+  let data: JSX.Element | null = null;
+  if (isVisible) {
+    data = (
+      <EditGuestsComponent
+        guests={guests}
+        updateAdults={updateAdults}
+        updateChildren={updateChildren}
+      />
     );
+  }
   return <div className="item-bar editable">{data}</div>;
 };
 

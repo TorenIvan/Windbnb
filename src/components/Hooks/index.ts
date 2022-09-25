@@ -1,5 +1,5 @@
-import showSearchType from "./Functions/showSearchType";
-import updateModalVisibility from "./Functions/updateModalVisibility";
-import updateSearchTerms from "./Functions/updateSearchTerms";
+import useModalVisibility from "./Functions/useModalVisibility";
+import useLocationInfo from "./Functions/useLocationInfo";
+import useGuestsInfo from "./Functions/useGuestsInfo";
 
-export { showSearchType, updateModalVisibility, updateSearchTerms };
+export { useModalVisibility, useLocationInfo, useGuestsInfo };
