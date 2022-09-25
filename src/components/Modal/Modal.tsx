@@ -1,16 +1,17 @@
 import { FC, memo } from "react";
 import modalStyles from "./Modal.module.scss";
 import { ModalVisibility, SearchItemType } from "../../utils/Constants";
-import { Guests, UserChoice, ModalSearchType } from "../../utils/Types";
+import { Guests, UserChoice } from "../../utils/Types";
 import SearchItem from "../SearchItem/SearchItem";
 import EditLocation from "../EditLocation/EditLocation";
 import EditGuests from "../EditGuests/EditGuests";
 import { useModalVisibility, useLocationInfo, useGuestsInfo } from "../Hooks";
 
 interface IModalProps {
-  key: ModalSearchType;
+  key: ModalVisibility;
+  modalVisibilityType: ModalVisibility;
   userChoice: UserChoice;
-  setModalVisibility: (visibility: ModalSearchType) => void;
+  setModalVisibility: (visibility: ModalVisibility) => void;
   search: (location: string, guests: Guests) => void;
 }
 
@@ -18,8 +19,8 @@ interface IModalProps {
  *
  */
 const Modal: FC<IModalProps> = (props): JSX.Element => {
-  const { key, userChoice, setModalVisibility, search } = props;
-  const modalSearchType = key;
+  const { modalVisibilityType, userChoice, setModalVisibility, search } = props;
+  const modalSearchType = modalVisibilityType;
 
   const [searchType, updateSearchType] = useModalVisibility(modalSearchType);
   const [location, modifyLocation] = useLocationInfo(userChoice.location);
@@ -37,8 +38,9 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
   const searchingLocation = searchType === ModalVisibility.EditLocation;
   const searchingGuests = searchType === ModalVisibility.EditGuests;
   const isModalVisible = searchingLocation || searchingGuests;
+  console.log(isModalVisible, "isModalVisible");
+
   return (
-    <div className={`${modalStyles.overlay} ${isModalVisible ? modalStyles.show : ""}`}>
       <div
         className={`${modalStyles.modalContainer} ${
           isModalVisible ? modalStyles.show : ""
@@ -80,7 +82,6 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 

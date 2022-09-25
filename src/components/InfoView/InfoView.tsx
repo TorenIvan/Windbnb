@@ -1,5 +1,4 @@
 import React, { FC, useCallback } from "react";
-import { ModalSearchType } from "../../utils/Types";
 import {
   InitialAdults,
   InitialChildren,
@@ -13,7 +12,7 @@ import InfoViewComponent from "./InfoViewComponent";
 type clickEvent = React.MouseEvent<HTMLButtonElement>;
 
 interface IProps {
-  setModalVisibility: (visibility: ModalSearchType) => void;
+  setModalVisibility: (visibility: ModalVisibility) => void;
   location: string;
   totalGuests: number;
 }
@@ -23,6 +22,7 @@ const InfoView: FC<IProps> = (props): JSX.Element => {
 
   const handleLocationPress = useCallback((event: clickEvent) => {
     event.preventDefault();
+    console.count("mpika handleLocationPress InfoView");
     setModalVisibility(ModalVisibility.EditLocation);
   }, []);
 

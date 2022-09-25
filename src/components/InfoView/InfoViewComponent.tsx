@@ -11,6 +11,7 @@ interface IProps {
 }
 
 const InfoViewComponent = (props: IProps): JSX.Element => {
+  console.count("mpika Component InfoView");
   const { locationTitle, guestsTitle, handleLocationPress, handleGuestsPress } = props;
   return (
     <div className={infoViewStyles.navBar}>

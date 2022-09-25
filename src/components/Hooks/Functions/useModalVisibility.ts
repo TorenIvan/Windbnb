@@ -1,16 +1,19 @@
 import { useState, useCallback } from "react";
-import { ModalSearchType } from "../../../utils/Types";
+import { ModalVisibility } from "../../../utils/Constants";
 
 type ReturnDataType = [
-  searchType: ModalSearchType,
-  updateSearchType: (searchType: ModalSearchType) => void
+  searchType: ModalVisibility,
+  updateSearchType: (searchType: ModalVisibility) => void
 ];
 
-const useModalVisibility = (type: ModalSearchType): ReturnDataType => {
-  const [searchType, setSearchType] = useState<ModalSearchType>(type);
+const useModalVisibility = (type: ModalVisibility): ReturnDataType => {
+  const [searchType, setSearchType] = useState<ModalVisibility>(type);
+  console.log("searchTypeHere: ", searchType);
+  
 
   const updateSearchType = useCallback(
-    (type: ModalSearchType) => {
+    (type: ModalVisibility) => {
+      console.count("Mpika updateSearchType");
       setSearchType(type);
     },
     [type]

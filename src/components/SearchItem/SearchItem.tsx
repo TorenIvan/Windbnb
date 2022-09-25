@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SearchItemType } from "../../utils/Constants";
+import { ModalVisibility, SearchItemType } from "../../utils/Constants";
 import { ModalSearchType } from "../../utils/Types";
 import searchItemStyles from "./SearchItem.module.scss";
 
@@ -7,7 +7,7 @@ interface IProps {
   title: string;
   content: string;
   isItBeingProcessed: boolean;
-  onClickType: (showInfo: ModalSearchType) => void;
+  onClickType: (showInfo: ModalVisibility) => void;
 }
 
 const SearchItem: FC<IProps> = (props): JSX.Element => {

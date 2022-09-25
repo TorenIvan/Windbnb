@@ -1,4 +1,5 @@
 import "./App.scss";
+import modalStyles from "./components/Modal/Modal.module.scss";
 import InfoView from "./components/InfoView/InfoView";
 import InfoLine from "./components/InfoLine/InfoLine";
 import Modal from "./components/Modal/Modal";
@@ -27,16 +28,22 @@ const App: FC = (): JSX.Element => {
     updateGuests(guests);
   };
 
+  console.log(modalSearchType);
+
   const userChoice = { location: location, guests: guests };
   const totalGuests: number = guests.adults + guests.children;
+  const isModalVisible = modalSearchType !== ModalVisibility.Hidden;
   return (
     <>
-      <Modal
-        key={modalSearchType}
-        userChoice={userChoice}
-        setModalVisibility={updateModalSearchType}
-        search={searchPlaces}
-      />
+      <div className={`${modalStyles.overlay} ${isModalVisible ? modalStyles.show : ""}`}>
+        <Modal
+          key={modalSearchType}
+          modalVisibilityType={modalSearchType}
+          userChoice={userChoice}
+          setModalVisibility={updateModalSearchType}
+          search={searchPlaces}
+        />
+      </div>
       <div className="App">
         <header>
           <InfoView
