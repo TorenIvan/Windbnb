@@ -1,35 +1,34 @@
 import React, { FC } from "react";
 import { ModalVisibility, SearchItemType } from "../../utils/Constants";
-import { ModalSearchType } from "../../utils/Types";
-import searchItemStyles from "./SearchItem.module.scss";
+import SearchItemComponent from "./SearchItemComponent";
 
 interface IProps {
   title: string;
   content: string;
   isItBeingProcessed: boolean;
-  onClickType: (showInfo: ModalVisibility) => void;
+  onSearchItemPress: (showInfo: ModalVisibility) => void;
 }
 
 const SearchItem: FC<IProps> = (props): JSX.Element => {
-  const { title, content, isItBeingProcessed, onClickType } = props;
+  const { title, content, isItBeingProcessed, onSearchItemPress } = props;
   const isLocation = title === SearchItemType.location;
   const isGuests = title === SearchItemType.guests;
 
-  const handleClick = () => {
-    onClickType(showInfo);
-  };
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    if (isItBeingProcessed) return;
+    if (isLocation) onSearchItemPress(ModalVisibility.EditLocation);
+    if (isGuests) onSearchItemPress(ModalVisibility.EditGuests);
+  }
 
   return (
-    <div
-      className={`item-bar editable ${
-        isItBeingProcessed ? searchItemStyles.processed : ""
-      }`}
-    >
-      <button className={searchItemStyles.itembarText} onClick={handleClick}>
-        <p className={searchItemStyles.title}> {title}</p>
-        <p className={searchItemStyles.choice}> {content}</p>
-      </button>
-    </div>
+    <SearchItemComponent
+      title={title}
+      content={content}
+      isItBeingProcessed={isItBeingProcessed}
+      handleClick={handleClick}
+    />
   );
 };
 

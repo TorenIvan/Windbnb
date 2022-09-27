@@ -37,12 +37,18 @@ const App: FC = (): JSX.Element => {
   return (
     <>
       <div className={`${modalStyles.overlay} ${isModalVisible ? modalStyles.show : ""}`}>
-        <Modal
-          key={modalSearchType}
-          modalVisibilityType={modalSearchType}
-          userChoice={userChoice}
-          setSearchTerms={searchPlaces}
-        />
+        <div
+          className={`${modalStyles.modalContainer} ${
+            isModalVisible ? modalStyles.show : ""
+          }`}
+        >
+          <Modal
+            key={modalSearchType}
+            modalVisibilityType={modalSearchType}
+            userChoice={userChoice}
+            setSearchTerms={searchPlaces}
+          />
+        </div>
       </div>
       <div className="App">
         <header>

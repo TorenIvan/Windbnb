@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, MouseEvent } from "react";
 import modalStyles from "./Modal.module.scss";
 import { ModalVisibility, SearchItemType } from "../../utils/Constants";
 import { Guests, UserChoice } from "../../utils/Types";
@@ -14,9 +14,6 @@ interface IModalProps {
   setSearchTerms: (location: string, guests: Guests, updateUserChoice?: boolean) => void;
 }
 
-/**
- *
- */
 const Modal: FC<IModalProps> = (props): JSX.Element => {
   const { modalVisibilityType, userChoice, setSearchTerms } = props;
   const modalSearchType = modalVisibilityType;
@@ -25,45 +22,46 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
   const [location, modifyLocation] = useLocationInfo(userChoice.location);
   const [guests, modifyGuests] = useGuestsInfo(userChoice.guests);
 
-  const exitModal = () => {
-    setSearchTerms(location, guests, false);
+  const exitModal = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setSearchTerms(location, guests);
   };
 
-  const searchPlace = () => {
-    setSearchTerms(location, guests);
+  const searchPlace = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setSearchTerms(location, guests, true);
   };
 
   const searchingLocation = searchType === ModalVisibility.EditLocation;
   const searchingGuests = searchType === ModalVisibility.EditGuests;
-  const isModalVisible = searchingLocation || searchingGuests;
   return (
-    <div
-      className={`${modalStyles.modalContainer} ${
-        isModalVisible ? modalStyles.show : ""
-      }`}
-    >
+    <>
       <div className={modalStyles.searchContainer}>
         <div className="search-bar-open">
           <SearchItem
             title={SearchItemType.location}
             content={location}
             isItBeingProcessed={searchingLocation}
-            onClickType={updateSearchType}
+            onSearchItemPress={updateSearchType}
           />
           <SearchItem
             title={SearchItemType.guests}
             content={"guests"}
             isItBeingProcessed={searchingGuests}
-            onClickType={updateSearchType}
+            onSearchItemPress={updateSearchType}
           />
           <div className="item-bar" id="search-icon">
-            <button onSubmit={searchPlace}>
+            <button onClick={searchPlace}>
               <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
             </button>
           </div>
         </div>
         <div className="search-edit">
-          <EditLocation isVisible={searchingLocation} modifyLocation={modifyLocation} />
+          <EditLocation
+            isVisible={searchingLocation}
+            modifyLocation={modifyLocation}
+            onLocationPress={updateSearchType}
+          />
           <EditGuests
             isVisible={searchingGuests}
             guests={guests}
@@ -77,7 +75,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
           <p>x</p>
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
