@@ -21,9 +21,9 @@ const EditGuestsComponent = (props: IProps): JSX.Element => {
         <div
           className={`${editGuestsStyles.buttonContainer} ${editGuestsStyles.withDivider}`}
         >
-          <button>-</button>
+          <button><span>-</span></button>
           <span>0</span>
-          <button>+</button>
+          <button><span>+</span></button>
         </div>
       </div>
 
@@ -33,9 +33,9 @@ const EditGuestsComponent = (props: IProps): JSX.Element => {
           <span className={editGuestsStyles.guestsCategoryClarification}>Ages 2-12</span>
         </article>
         <div className={editGuestsStyles.buttonContainer}>
-          <button>-</button>
+          <button><span>-</span></button>
           <span>0</span>
-          <button>+</button>
+          <button><span>+</span></button>
         </div>
       </div>
     </div>
