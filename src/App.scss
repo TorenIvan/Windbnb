@@ -17,8 +17,19 @@ $small: 924px;
 }
 
 .App {
+  position: fixed;
+  height: 100%;
+  min-width: 100%;
+  background-color: var(--almostWhite);
+  transition: all .5s ease-in-out;
+}
+
+.App.fixedBackground {
+  background-color: var(--searchModal);
+}
+
+.MainApp {
   text-align: center;
-  background-color: inherit;
   position: absolute;
   top: 50%;
   left: 50%;

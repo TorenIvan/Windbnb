@@ -35,7 +35,7 @@ const App: FC = (): JSX.Element => {
   const totalGuests: number = guests.adults + guests.children;
   const isModalVisible = modalSearchType !== ModalVisibility.Hidden;
   return (
-    <>
+    <div className={`App ${isModalVisible ? "fixedBackground" : ""}`}>
       <div className={`${modalStyles.overlay} ${isModalVisible ? modalStyles.show : ""}`}>
         <div
           className={`${modalStyles.modalContainer} ${
@@ -50,7 +50,7 @@ const App: FC = (): JSX.Element => {
           />
         </div>
       </div>
-      <div className="App">
+      <div className="MainApp">
         <header>
           <InfoView
             setModalVisibility={updateModalSearchType}
@@ -62,7 +62,7 @@ const App: FC = (): JSX.Element => {
         <main></main>
         <footer></footer>
       </div>
-    </>
+    </div>
   );
 };
 
