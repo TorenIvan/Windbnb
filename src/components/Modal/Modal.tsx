@@ -69,6 +69,11 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
           />
           <div className="item-bar" id="search-icon" />
         </div>
+        <div className="item-bar small-screen" id="search-icon">
+          <button onClick={searchPlace}>
+            <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
+          </button>
+        </div>
       </div>
       <div className={modalStyles.closeModal}>
         <button onClick={exitModal}>

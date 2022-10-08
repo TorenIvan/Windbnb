@@ -38,7 +38,11 @@ const EditLocation: FC<IProps> = (props): JSX.Element => {
       </div>
     );
   }
-  return <div className="item-bar editable">{data}</div>;
+  return (
+    <div className={`item-bar editable ${data === null ? "hide-item" : ""}`}>
+      {data}
+    </div>
+  );
 };
 
 export default EditLocation;

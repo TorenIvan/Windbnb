@@ -29,7 +29,11 @@ const EditGuests: FC<IProps> = ({ isVisible, guests, modifyGuests }): JSX.Elemen
       />
     );
   }
-  return <div className="item-bar editable">{data}</div>;
+  return (
+    <div className={`item-bar editable ${data === null ? "hide-item" : ""}`}>
+      {data}
+    </div>
+  );
 };
 
 export default EditGuests;

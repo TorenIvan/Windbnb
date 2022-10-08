@@ -63,10 +63,20 @@ footer {
   box-shadow: 2px 2px 1px var(--almostWhiteBorder);
   border: #{$border};
   border-radius: 16px;
+
+  @media screen and (max-width: $small) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 #search-icon {
   box-sizing: border-box;
+
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 
 #search-icon>button {
@@ -92,6 +102,27 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  @media screen and (max-width: $small) {
+    width: 100%;
+  }
+}
+
+#search-icon.small-screen {
+  display: none;
+
+  @media screen and (max-width: $small) {
+    display: flex;
+    box-sizing: border-box;
+    flex: .1;
+    margin-top: 3rem;
+  }
+}
+
+.hide-item {
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 
 .editable {
