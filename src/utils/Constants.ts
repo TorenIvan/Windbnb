@@ -1,7 +1,7 @@
 export enum ModalVisibility {
   Hidden,
   EditLocation,
-  EditGuests
+  EditGuests,
 }
 
 export const InitialGuestsTitle = "Add Guests";
@@ -18,3 +18,10 @@ export const SearchItemType = {
   location: "location",
   guests: "guests",
 };
+
+export const InitialLocations: string[] = [
+  "Helsinki, Finland",
+  "Turku, Finland",
+  "Oulu, Finland",
+  "Vaasa, Finland",
+];

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { ModalVisibility } from "../../utils/Constants";
+import { ModalVisibility, InitialLocations } from "../../utils/Constants";
 import { ExtractLocationFromHTMLText } from "../../utils/Helpers";
-import editLocationStyles from "./EditLocation.module.scss";
+import EditLocationComponent from "./EditLocationComponent";
 
 interface IProps {
   isVisible: boolean;
@@ -22,26 +22,14 @@ const EditLocation: FC<IProps> = (props): JSX.Element => {
   let data: JSX.Element | null = null;
   if (isVisible) {
     data = (
-      <div className={editLocationStyles.itembarText}>
-        <button className={editLocationStyles.multipleChoice} onClick={updateLocation}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Helsinki, Finland
-        </button>
-        <button className={editLocationStyles.multipleChoice} onClick={updateLocation}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Turku, Finland
-        </button>
-        <button className={editLocationStyles.multipleChoice} onClick={updateLocation}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Oulu, Finland
-        </button>
-        <button className={editLocationStyles.multipleChoice} onClick={updateLocation}>
-          &#xf124;&nbsp;&nbsp;&nbsp;Vaasa, Finland
-        </button>
-      </div>
+      <EditLocationComponent
+        locations={InitialLocations}
+        onLocationClick={updateLocation}
+      />
     );
   }
   return (
-    <div className={`item-bar editable ${data === null ? "hide-item" : ""}`}>
-      {data}
-    </div>
+    <div className={`item-bar editable ${data === null ? "hide-item" : ""}`}>{data}</div>
   );
 };
 
