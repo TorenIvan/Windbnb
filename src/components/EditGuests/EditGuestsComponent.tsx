@@ -1,6 +1,14 @@
 import { memo } from "react";
 import { Guests } from "../../utils/Types";
 import editGuestsStyles from "./EditGuests.module.scss";
+import {
+  MinusSymbol,
+  AddSymbol,
+  Children,
+  ChildrenClarificationText,
+  Adults,
+  AdultsClarificationText,
+} from "../../utils/Constants";
 
 interface IProps {
   guests: Guests;
@@ -9,33 +17,44 @@ interface IProps {
 }
 
 const EditGuestsComponent = (props: IProps): JSX.Element => {
+  const { guests, updateAdults, updateChildren } = props;
+  const { adults, children } = guests;
+
   return (
     <div className={editGuestsStyles.itembarText}>
       <div className={editGuestsStyles.guestsCategory}>
         <article>
-          <span className={editGuestsStyles.guestsCategoryTitle}>Adults</span>
+          <span className={editGuestsStyles.guestsCategoryTitle}>{Adults}</span>
           <span className={editGuestsStyles.guestsCategoryClarification}>
-            Age 13 or above
+            {AdultsClarificationText}
           </span>
         </article>
         <div
           className={`${editGuestsStyles.buttonContainer} ${editGuestsStyles.withDivider}`}
         >
-          <button><span>-</span></button>
-          <span>0</span>
-          <button><span>+</span></button>
+          <button onClick={() => updateAdults(adults - 1)}>
+            <span>{MinusSymbol}</span>
+          </button>
+          <span>{adults}</span>
+          <button onClick={() => updateAdults(adults + 1)}>
+            <span>{AddSymbol}</span>
+          </button>
         </div>
       </div>
 
       <div className={editGuestsStyles.guestsCategory}>
         <article>
-          <span className={editGuestsStyles.guestsCategoryTitle}>Children</span>
-          <span className={editGuestsStyles.guestsCategoryClarification}>Ages 2-12</span>
+          <span className={editGuestsStyles.guestsCategoryTitle}>{Children}</span>
+          <span className={editGuestsStyles.guestsCategoryClarification}>{ChildrenClarificationText}</span>
         </article>
         <div className={editGuestsStyles.buttonContainer}>
-          <button><span>-</span></button>
-          <span>0</span>
-          <button><span>+</span></button>
+          <button onClick={() => updateChildren(children - 1)}>
+            <span>{MinusSymbol}</span>
+          </button>
+          <span>{children}</span>
+          <button onClick={() => updateChildren(children + 1)}>
+            <span>{AddSymbol}</span>
+          </button>
         </div>
       </div>
     </div>

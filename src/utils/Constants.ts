@@ -25,3 +25,15 @@ export const InitialLocations: string[] = [
   "Oulu, Finland",
   "Vaasa, Finland",
 ];
+
+export const Adults: string = "Adults";
+
+export const Children: string = "Children";
+
+export const AdultsClarificationText: string = "Age 13 or above";
+
+export const ChildrenClarificationText: string = "Age 2-12";
+
+export const MinusSymbol: string = "-";
+
+export const AddSymbol: string = "+";

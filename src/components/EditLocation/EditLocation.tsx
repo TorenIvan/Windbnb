@@ -28,6 +28,7 @@ const EditLocation: FC<IProps> = (props): JSX.Element => {
       />
     );
   }
+
   return (
     <div className={`item-bar editable ${data === null ? "hide-item" : ""}`}>{data}</div>
   );
