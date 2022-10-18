@@ -64,7 +64,11 @@ $border: 1px solid var(--almostWhiteBorder);
   border-right: #{$border};
 }
 
-#guests-item p {
+#enabled-color {
+  color: var(--text);
+}
+
+#disabled-color {
   color: var(--text-disabled);
 }
 

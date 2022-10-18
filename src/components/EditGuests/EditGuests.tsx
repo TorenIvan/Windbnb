@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { HasGuestsExceededTheCapacityLimit } from "../../utils/Helpers";
 import { Guests } from "../../utils/Types";
 import EditGuestsComponent from "./EditGuestsComponent";
@@ -10,27 +10,22 @@ interface IProps {
 }
 
 const EditGuests: FC<IProps> = ({ isVisible, guests, modifyGuests }): JSX.Element => {
-  const updateAdults = (adults: number) => {
-    const childrenBeforeUpdating: number = guests.children;
-    const adultsBeforeUpdating: number = adults;
-    const guestsNumberOffLimit = HasGuestsExceededTheCapacityLimit(
-      adultsBeforeUpdating,
-      childrenBeforeUpdating
-    );
+  const updateAdults = (plusNumberValue: number) => {
+    const children: number = guests.children;
+    const adults: number = guests.adults + plusNumberValue;
+    const guestsNumberOffLimit = HasGuestsExceededTheCapacityLimit(adults, children);
     if (guestsNumberOffLimit === true) return;
+
     const newGuests: Guests = { ...guests, adults: adults };
     modifyGuests(newGuests);
   };
 
-  const updateChildren = (children: number) => {
-    const childrenBeforeUpdating: number = children;
-    const adultsBeforeUpdating: number = guests.adults;
-    const guestsNumberExceededLimit = HasGuestsExceededTheCapacityLimit(
-      adultsBeforeUpdating,
-      childrenBeforeUpdating
-    );
-    
+  const updateChildren = (plusNumberValue: number) => {
+    const children: number = guests.children + plusNumberValue;
+    const adults: number = guests.adults;
+    const guestsNumberExceededLimit = HasGuestsExceededTheCapacityLimit(adults, children);
     if (guestsNumberExceededLimit === true) return;
+
     const newGuests: Guests = { ...guests, children: children };
     modifyGuests(newGuests);
   };

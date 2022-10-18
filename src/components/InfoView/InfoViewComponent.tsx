@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import Logo from "../../logo.png";
 import "font-awesome/css/font-awesome.min.css";
 import infoViewStyles from "./InfoView.module.scss";
+import { InitialGuestsTitle } from "../../utils/Constants";
 
 interface IProps {
   locationTitle: string;
@@ -12,6 +13,10 @@ interface IProps {
 
 const InfoViewComponent = (props: IProps): JSX.Element => {
   const { locationTitle, guestsTitle, handleLocationPress, handleGuestsPress } = props;
+  let guestsTextColorEnabled: boolean = true;
+  if (guestsTitle === InitialGuestsTitle) {
+    guestsTextColorEnabled = false;
+  }
   return (
     <div className={infoViewStyles.navBar}>
       <div id={infoViewStyles["icon-container"]}>
@@ -25,7 +30,15 @@ const InfoViewComponent = (props: IProps): JSX.Element => {
         </div>
         <div id={infoViewStyles["guests-item"]} className={infoViewStyles.closedItem}>
           <button onClick={handleGuestsPress}>
-            <p>{guestsTitle}</p>
+            <p
+              id={
+                guestsTextColorEnabled
+                  ? infoViewStyles["enabled-color"]
+                  : infoViewStyles["disabled-color"]
+              }
+            >
+              {guestsTitle}
+            </p>
           </button>
         </div>
         <div

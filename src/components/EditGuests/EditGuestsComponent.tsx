@@ -32,11 +32,11 @@ const EditGuestsComponent = (props: IProps): JSX.Element => {
         <div
           className={`${editGuestsStyles.buttonContainer} ${editGuestsStyles.withDivider}`}
         >
-          <button onClick={() => updateAdults(adults - 1)}>
+          <button onClick={() => updateAdults(-1)}>
             <span>{MinusSymbol}</span>
           </button>
           <span>{adults}</span>
-          <button onClick={() => updateAdults(adults + 1)}>
+          <button onClick={() => updateAdults(+1)}>
             <span>{AddSymbol}</span>
           </button>
         </div>
@@ -45,14 +45,16 @@ const EditGuestsComponent = (props: IProps): JSX.Element => {
       <div className={editGuestsStyles.guestsCategory}>
         <article>
           <span className={editGuestsStyles.guestsCategoryTitle}>{Children}</span>
-          <span className={editGuestsStyles.guestsCategoryClarification}>{ChildrenClarificationText}</span>
+          <span className={editGuestsStyles.guestsCategoryClarification}>
+            {ChildrenClarificationText}
+          </span>
         </article>
         <div className={editGuestsStyles.buttonContainer}>
-          <button onClick={() => updateChildren(children - 1)}>
+          <button onClick={() => updateChildren(-1)}>
             <span>{MinusSymbol}</span>
           </button>
           <span>{children}</span>
-          <button onClick={() => updateChildren(children + 1)}>
+          <button onClick={() => updateChildren(+1)}>
             <span>{AddSymbol}</span>
           </button>
         </div>

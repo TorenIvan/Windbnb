@@ -15,3 +15,7 @@ export function HasGuestsExceededTheCapacityLimit(
 
   return capacityExceeded;
 }
+
+export function CapitalizeFirstLetterOfString(word: string) {
+  return word[0] + word.slice(1);
+}

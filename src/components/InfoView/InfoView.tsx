@@ -6,7 +6,9 @@ import {
   InitialLocationTitle,
   InitialPlace,
   ModalVisibility,
+  SearchItemType,
 } from "../../utils/Constants";
+import { CapitalizeFirstLetterOfString } from "../../utils/Helpers";
 import InfoViewComponent from "./InfoViewComponent";
 
 type clickEvent = React.MouseEvent<HTMLButtonElement>;
@@ -33,7 +35,9 @@ const InfoView: FC<IProps> = (props): JSX.Element => {
   let locationTitle: string = location;
   if (location === InitialPlace) locationTitle = InitialLocationTitle;
 
-  let guestsTitle: string = totalGuests.toString();
+  let guestsTitle: string = `${totalGuests.toString()} ${CapitalizeFirstLetterOfString(
+    SearchItemType.guests
+  )}`;
   if (totalGuests === InitialAdults + InitialChildren) guestsTitle = InitialGuestsTitle;
 
   return (
