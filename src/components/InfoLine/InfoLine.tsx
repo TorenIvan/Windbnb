@@ -1,11 +1,11 @@
-import React from "react";
+import { InfoLineTitle, Stay, Stays } from "../../utils/Constants";
 import infoLineStyles from "./InfoLine.module.scss";
 
 const InfoLine = () => {
   return (
     <div id={infoLineStyles["info-bar"]}>
       <div id={infoLineStyles["country-info"]}>
-        <p>Stays in Finland</p>
+        <p>{InfoLineTitle}</p>
       </div>
       <div id={infoLineStyles["count-info"]}>
         <p>12+ stays</p>

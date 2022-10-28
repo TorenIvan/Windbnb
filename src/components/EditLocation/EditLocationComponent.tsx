@@ -8,15 +8,20 @@ interface IProps {
 
 const EditLocationComponent = (props: IProps): JSX.Element => {
   const { locations, onLocationClick } = props;
-  return (
-    <div className={editLocationStyles.itembarText}>
-      {locations.map(location => (
-        <button className={editLocationStyles.multipleChoice} onClick={onLocationClick}>
-          &#xf124;&nbsp;&nbsp;&nbsp;{location}
-        </button>
-      ))}
-    </div>
-  );
+
+  const renderLocation = (location: string) => {
+    return (
+      <button className={editLocationStyles.multipleChoice} onClick={onLocationClick}>
+        &#xf124;&nbsp;&nbsp;&nbsp;{location}
+      </button>
+    );
+  };
+
+  const renderLocations = () => {
+    return locations.map(renderLocation);
+  };
+
+  return <div className={editLocationStyles.itembarText}>{renderLocations()}</div>;
 };
 
 export default memo(EditLocationComponent);

@@ -6,6 +6,12 @@ export enum ModalVisibility {
 
 export const InitialGuestsTitle = "Add Guests";
 
+export const InfoLineTitle = "Stays in Finland";
+
+export const Stay = "stay";
+
+export const Stays = "stays";
+
 export const InitialLocationTitle = "Helsinki, Finland";
 
 export const InitialPlace = "Helsinki";
