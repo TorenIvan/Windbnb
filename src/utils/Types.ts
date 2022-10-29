@@ -5,5 +5,19 @@ export type Guests = {
 
 export type UserChoice = {
   location: string;
-  guests: Guests; 
+  guests: Guests;
 };
+
+export type PlaceType = {
+  city: string;
+  country: string;
+  superHost: boolean;
+  title: string;
+  rating: number;
+  maxGuests: number;
+  type: string;
+  beds: number | null;
+  photo: string;
+};
+
+export type PlacesType = PlaceType[];

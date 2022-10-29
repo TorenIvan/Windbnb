@@ -1,4 +1,5 @@
 import "./App.scss";
+import { useMemo } from "react";
 import modalStyles from "./components/Modal/Modal.module.scss";
 import InfoView from "./components/InfoView/InfoView";
 import InfoLine from "./components/InfoLine/InfoLine";
@@ -12,6 +13,7 @@ import {
   InitialChildren,
 } from "./utils/Constants";
 import { Guests } from "./utils/Types";
+import Places from "./components/Places/Places";
 
 const App: FC = (): JSX.Element => {
   const [location, updateLocation] = useLocationInfo(InitialPlace);
@@ -31,7 +33,10 @@ const App: FC = (): JSX.Element => {
     updateModalSearchType(ModalVisibility.Hidden);
   };
 
-  const userChoice = { location: location, guests: guests };
+  const userChoice = useMemo(
+    () => ({ location: location, guests: guests }),
+    [location, guests]
+  );
   const totalGuests: number = guests.adults + guests.children;
   const isModalVisible = modalSearchType !== ModalVisibility.Hidden;
   return (
@@ -59,7 +64,9 @@ const App: FC = (): JSX.Element => {
           />
           <InfoLine />
         </header>
-        <main></main>
+        <main>
+          <Places userChoice={userChoice} />
+        </main>
         <footer></footer>
       </div>
     </div>
