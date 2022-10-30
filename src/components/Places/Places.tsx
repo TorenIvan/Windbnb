@@ -9,8 +9,6 @@ const Places = (props: { userChoice: UserChoice }): JSX.Element => {
   const userChoice = useRef<UserChoice>(props.userChoice);
   const stays = useRef<PlacesType>([]);
 
-  console.log("Mpika");
-
   if (props.userChoice !== userChoice.current) {
     setLoading(true);
     userChoice.current = props.userChoice;
@@ -22,7 +20,6 @@ const Places = (props: { userChoice: UserChoice }): JSX.Element => {
         stays.current = places;
         setLoading(false);
       } catch (error) {
-        console.error(error);
         setLoading(false);
       }
     })();
