@@ -30,8 +30,7 @@ class PlacesService {
       );
       return places;
     } catch (error) {
-      console.error(error);
-      return [];
+      throw new Error(`${error}`);
     }
   }
 }

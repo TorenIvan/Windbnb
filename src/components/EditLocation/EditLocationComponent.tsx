@@ -11,7 +11,11 @@ const EditLocationComponent = (props: IProps): JSX.Element => {
 
   const renderLocation = (location: string) => {
     return (
-      <button className={editLocationStyles.multipleChoice} onClick={onLocationClick}>
+      <button
+        className={editLocationStyles.multipleChoice}
+        onClick={onLocationClick}
+        key={location}
+      >
         &#xf124;&nbsp;&nbsp;&nbsp;{location}
       </button>
     );
