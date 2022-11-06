@@ -8,39 +8,41 @@ import PlacesService from "./PlacesService";
 
 const Places = (props: { userChoice: UserChoice }): JSX.Element => {
 	const [loading, setLoading] = useState<boolean>(false);
-	const userChoice = useRef<UserChoice>(props.userChoice);
-	const stays = useRef<PlacesType>([]);
+	const [stays, setStays] = useState<PlacesType>([]);
 	const fetchError = useRef<boolean>(false);
+	const userChoice = useRef<UserChoice>(props.userChoice);
 
 	useEffect(() => {
 		setLoading(true);
 		fetchError.current = false;
 		userChoice.current = props.userChoice;
 
-		let ignore = false;
+		let didCancel = false;
 		(async () => {
 			try {
 				const placesService = new PlacesService(userChoice.current);
 				const places = await placesService.GetPlaces();
-				if (ignore === false) {
-					stays.current = places;
-					setLoading(false);
+				if (didCancel === false) {
+					setStays(places);
 				}
 			} catch (error) {
-				console.log("Why Error");
 				fetchError.current = true;
+			} finally {
 				setLoading(false);
 			}
 		})();
 
 		return () => {
-			ignore = true;
+			didCancel = true;
 		};
 	}, [props.userChoice]);
 
+	console.log("fetchError: ", fetchError.current);
+	console.log("stays length: ", stays.length);
+	console.log("loading: ", loading);
 	if (loading === true) return <LoadingStaysComponent />;
 	if (fetchError.current === true) return <ErrorComponent />;
-	if (stays.current.length === 0) return <NoStaysComponent />;
+	if (stays.length === 0) return <NoStaysComponent />;
 
 	return <PlacesComponent stays={stays.current} />;
 };
