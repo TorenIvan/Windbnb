@@ -15,7 +15,6 @@ class PlacesService {
 
 	async GetPlaces(): Promise<PlacesType> {
 		try {
-			console.log("Mpika");
 			const allPlaces = await fetch("http://localhost:3000/src/stays.json", {
 				method: "GET",
 				headers: {
@@ -23,7 +22,6 @@ class PlacesService {
 					Accept: "application/json",
 				},
 			});
-			console.log("allPlaces: ", allPlaces);
 			const allPlacesJSON: PlacesType = await allPlaces.json();
 			const places: PlacesType = allPlacesJSON.filter(
 				(place: PlaceType) =>

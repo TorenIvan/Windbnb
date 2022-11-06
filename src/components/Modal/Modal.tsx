@@ -11,7 +11,11 @@ interface IModalProps {
   key: ModalVisibility;
   modalVisibilityType: ModalVisibility;
   userChoice: UserChoice;
-  setSearchTerms: (location: string, guests: Guests, updateUserChoice?: boolean) => void;
+  setSearchTerms: (
+    location: string,
+    guests: Guests,
+    updateUserChoice?: boolean
+  ) => void;
 }
 
 const Modal: FC<IModalProps> = (props): JSX.Element => {

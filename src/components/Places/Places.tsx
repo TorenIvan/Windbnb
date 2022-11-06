@@ -7,44 +7,41 @@ import PlacesComponent from "./PlacesComponent";
 import PlacesService from "./PlacesService";
 
 const Places = (props: { userChoice: UserChoice }): JSX.Element => {
-	const [loading, setLoading] = useState<boolean>(false);
-	const [stays, setStays] = useState<PlacesType>([]);
-	const fetchError = useRef<boolean>(false);
-	const userChoice = useRef<UserChoice>(props.userChoice);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [stays, setStays] = useState<PlacesType>([]);
+  const fetchError = useRef<boolean>(false);
+  const userChoice = useRef<UserChoice>(props.userChoice);
 
-	useEffect(() => {
-		setLoading(true);
-		fetchError.current = false;
-		userChoice.current = props.userChoice;
+  useEffect(() => {
+    setLoading(true);
+    fetchError.current = false;
+    userChoice.current = props.userChoice;
 
-		let didCancel = false;
-		(async () => {
-			try {
-				const placesService = new PlacesService(userChoice.current);
-				const places = await placesService.GetPlaces();
-				if (didCancel === false) {
-					setStays(places);
-				}
-			} catch (error) {
-				fetchError.current = true;
-			} finally {
-				setLoading(false);
-			}
-		})();
+    let didCancel = false;
+    (async () => {
+      try {
+        const placesService = new PlacesService(userChoice.current);
+        const places = await placesService.GetPlaces();
+        if (didCancel === false) {
+          setStays(places);
+        }
+      } catch (error) {
+        fetchError.current = true;
+      } finally {
+        setLoading(false);
+      }
+    })();
 
-		return () => {
-			didCancel = true;
-		};
-	}, [props.userChoice]);
+    return () => {
+      didCancel = true;
+    };
+  }, [props.userChoice]);
 
-	console.log("fetchError: ", fetchError.current);
-	console.log("stays length: ", stays.length);
-	console.log("loading: ", loading);
-	if (loading === true) return <LoadingStaysComponent />;
-	if (fetchError.current === true) return <ErrorComponent />;
-	if (stays.length === 0) return <NoStaysComponent />;
+  if (loading === true) return <LoadingStaysComponent />;
+  if (fetchError.current === true) return <ErrorComponent />;
+  if (stays.length === 0) return <NoStaysComponent />;
 
-	return <PlacesComponent stays={stays.current} />;
+  return <PlacesComponent stays={stays.current} />;
 };
 
 export default memo(Places);
