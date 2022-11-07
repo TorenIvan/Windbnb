@@ -7,8 +7,8 @@ class PlacesService {
   private readonly children: number;
 
   constructor(userChoice: UserChoice) {
-    this.country = userChoice.location.split(",")[0].trim();
-    this.city = userChoice.location.split(",")[1].trim();
+    this.city = userChoice.location.split(",")[0].trim();
+    this.country = userChoice.location.split(",")[1].trim();
     this.adults = userChoice.guests.adults;
     this.children = userChoice.guests.children;
   }
@@ -25,9 +25,9 @@ class PlacesService {
       const allPlacesJSON: PlacesType = await allPlaces.json();
       const places: PlacesType = allPlacesJSON.filter(
         (place: PlaceType) =>
-          place.country === this.country &&
-          place.city === this.city &&
-          place.maxGuests === this.adults + this.children
+          place.country == this.country &&
+          place.city == this.city &&
+          place.maxGuests >= this.adults + this.children
       );
       return places;
     } catch (error) {

@@ -12,6 +12,7 @@ import {
 import { FC } from "react";
 import {
   ModalVisibility,
+  InitialLocationTitle,
   InitialPlace,
   InitialAdults,
   InitialChildren,
@@ -20,7 +21,7 @@ import { Guests } from "./utils/Types";
 import Places from "./components/Places/Places";
 
 const App: FC = (): JSX.Element => {
-  const [location, updateLocation] = useLocationInfo(InitialPlace);
+  const [location, updateLocation] = useLocationInfo(InitialLocationTitle);
   const [guests, updateGuests] = useGuestsInfo({
     adults: InitialAdults,
     children: InitialChildren,

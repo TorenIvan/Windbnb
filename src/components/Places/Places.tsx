@@ -9,12 +9,12 @@ import PlacesService from "./PlacesService";
 const Places = (props: { userChoice: UserChoice }): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(false);
   const [stays, setStays] = useState<PlacesType>([]);
-  const fetchError = useRef<boolean>(false);
+  const [fetchError, setFetchError] = useState<boolean>(false);
   const userChoice = useRef<UserChoice>(props.userChoice);
 
   useEffect(() => {
     setLoading(true);
-    fetchError.current = false;
+    setFetchError(false);
     userChoice.current = props.userChoice;
 
     let didCancel = false;
@@ -26,7 +26,7 @@ const Places = (props: { userChoice: UserChoice }): JSX.Element => {
           setStays(places);
         }
       } catch (error) {
-        fetchError.current = true;
+        setFetchError(true);
       } finally {
         setLoading(false);
       }
@@ -38,10 +38,9 @@ const Places = (props: { userChoice: UserChoice }): JSX.Element => {
   }, [props.userChoice]);
 
   if (loading === true) return <LoadingStaysComponent />;
-  if (fetchError.current === true) return <ErrorComponent />;
+  if (fetchError === true) return <ErrorComponent />;
   if (stays.length === 0) return <NoStaysComponent />;
-
-  return <PlacesComponent stays={stays.current} />;
+  return <PlacesComponent stays={stays} />;
 };
 
 export default memo(Places);
