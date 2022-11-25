@@ -10,7 +10,7 @@ const PlacesComponent = ({ stays }: { stays: PlacesType }): JSX.Element => {
     return stays.map(renderPlace);
   };
 
-  return <div>{renderPlaces()}</div>;
+  return <div>eeeee</div>;
 };
 
 export default memo(PlacesComponent);

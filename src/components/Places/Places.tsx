@@ -8,8 +8,8 @@ import PlacesService from "./PlacesService";
 
 const Places = (props: { userChoice: UserChoice }): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [stays, setStays] = useState<PlacesType>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
+  const [stays, setStays] = useState<PlacesType>([]);
   const userChoice = useRef<UserChoice>(props.userChoice);
 
   useEffect(() => {
