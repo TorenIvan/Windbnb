@@ -5,18 +5,19 @@ class PlacesService {
   private readonly city: string;
   private readonly adults: number;
   private readonly children: number;
-  private static readonly PLACES_URL: string = import.meta.env.VITE_PLACES_PATH;
+  private static readonly placesPath: string = import.meta.env.PLACES_PATH;
 
   constructor(userChoice: UserChoice) {
     this.city = userChoice.location.split(",")[0].trim();
     this.country = userChoice.location.split(",")[1].trim();
     this.adults = userChoice.guests.adults;
     this.children = userChoice.guests.children;
+    console.log("placesPath: ", placesPath);
   }
 
   async GetPlaces(): Promise<PlacesType> {
     try {
-      const allPlaces = await fetch(PlacesService.PLACES_URL, {
+      const allPlaces = await fetch(this.placesPath, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
