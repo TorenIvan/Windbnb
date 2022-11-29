@@ -5,9 +5,7 @@ $small: 480px;
 
 .StaysContainer {
   display: grid;
-  //place-items: space-between center;
   background-color: green;
-  justify-content: space-between;
   gap: 3rem 2rem;
   width: 100%;
   grid-template-columns: minmax(0, 1fr);

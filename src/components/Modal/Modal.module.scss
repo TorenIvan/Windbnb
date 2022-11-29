@@ -9,7 +9,7 @@ $small: 924px;
   opacity: 0;
   z-index: -1;
   top: -50%;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   @media screen and (max-width: $small) {
     height: 100%;
@@ -48,7 +48,7 @@ $small: 924px;
   opacity: 0;
   z-index: -1;
   top: -50%;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   @media screen and (max-width: $small) {
     height: 100%;
