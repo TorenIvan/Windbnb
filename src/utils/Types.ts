@@ -21,3 +21,7 @@ export type PlaceType = {
 };
 
 export type PlacesType = PlaceType[];
+
+export type PlaceTypeExtended = PlaceType & { id: number };
+
+export type PlacesTypeExtended = PlaceTypeExtended[];

@@ -1,4 +1,9 @@
-import { PlacesType, PlaceType, UserChoice } from "../../utils/Types";
+import {
+  PlacesType,
+  PlacesTypeExtended,
+  PlaceTypeExtended,
+  UserChoice,
+} from "../../utils/Types";
 
 class PlacesService {
   private readonly country: string;
@@ -16,16 +21,19 @@ class PlacesService {
 
   async GetPlaces(): Promise<PlacesType> {
     try {
-      const allPlaces = await fetch(PlacesService.PLACES_URL, {
+      const retrievedPlaces = await fetch(PlacesService.PLACES_URL, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
-      const allPlacesJSON: PlacesType = await allPlaces.json();
-      const places: PlacesType = allPlacesJSON.filter(
-        (place: PlaceType) =>
+      const allPlaces: PlacesType = await retrievedPlaces.json();
+      const allPlacesExtendedWithId: PlacesTypeExtended = allPlaces.map(
+        (place, index) => ({ ...place, id: index })
+      );
+      const places: PlacesTypeExtended = allPlacesExtendedWithId.filter(
+        (place: PlaceTypeExtended) =>
           place.country === this.country &&
           place.city === this.city &&
           place.maxGuests >= this.adults + this.children

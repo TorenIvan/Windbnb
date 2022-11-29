@@ -1,16 +1,23 @@
 import { memo } from "react";
-import { PlaceType, PlacesType } from "../../utils/Types";
+import { PlacesTypeExtended, PlaceTypeExtended } from "../../utils/Types";
+import Stay from "../Stay/Stay.tsx";
+import placesStyles from "./Places.module.scss";
 
-const PlacesComponent = ({ stays }: { stays: PlacesType }): JSX.Element => {
-  const renderPlace = (stay: PlaceType): JSX.Element => {
-    return <>{stay}</>;
+interface IProps {
+  stays: PlacesTypeExtended;
+}
+
+const PlacesComponent = ({ stays }: IProps): JSX.Element => {
+  const renderPlace = (stay: PlaceTypeExtended): JSX.Element => {
+    const { id, ...otherInfo } = stay;
+    return <Stay key={id} stay={otherInfo} />;
   };
 
   const renderPlaces = () => {
     return stays.map(renderPlace);
   };
 
-  return <div>eeeee</div>;
+  return <div className={placesStyles.StaysContainer}>{renderPlaces()}</div>;
 };
 
 export default memo(PlacesComponent);

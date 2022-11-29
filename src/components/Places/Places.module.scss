@@ -1,0 +1,26 @@
+$xlarge: 1200px;
+$large: 768px;
+$medium: 600px;
+$small: 480px;
+
+.StaysContainer {
+  display: grid;
+  //place-items: space-between center;
+  background-color: green;
+  justify-content: space-between;
+  gap: 3rem 2rem;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+
+  @media screen and (min-width: $medium) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: $large) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: $xlarge) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

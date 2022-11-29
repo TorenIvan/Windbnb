@@ -1,4 +1,4 @@
-$border: 1px solid var(--almostWhiteBorder);
+$border: 2px solid var(--almostWhiteBorder);
 $medium: 1200px;
 $small: 924px;
 
@@ -21,7 +21,7 @@ $small: 924px;
   height: 100%;
   min-width: 100%;
   background-color: var(--almostWhite);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .App.fixedBackground {
@@ -90,22 +90,22 @@ footer {
   }
 }
 
-#search-icon>button {
+#search-icon > button {
   width: 80%;
   max-width: 180px;
-  background-color: #EB5757;
+  background-color: #eb5757;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   box-sizing: border-box;
 }
 
-#search-icon>button>p {
+#search-icon > button > p {
   font-family: Arial, Helvetica, sans-serif, FontAwesome;
   font-style: normal;
   font-weight: 600;
   font-size: 1.1ch;
   line-height: 18px;
-  color: #F2F2F2;
+  color: #f2f2f2;
 }
 
 .item-bar {
@@ -125,7 +125,7 @@ footer {
   @media screen and (max-width: $small) {
     display: flex;
     box-sizing: border-box;
-    flex: .1;
+    flex: 0.1;
     margin-top: 3rem;
   }
 }
@@ -142,11 +142,11 @@ footer {
 
 .item-bar :not(.editable) {
   display: flex;
-  flex: .8;
+  flex: 0.8;
   justify-content: center;
 }
 
 .search-edit {
   @extend .global-search-bar;
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
