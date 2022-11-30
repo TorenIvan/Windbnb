@@ -8,9 +8,11 @@ $border: 1px solid var(--almostWhiteBorder);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2rem;
 
   @media screen and (max-width: $small) {
     flex-direction: column;
+    margin-bottom: 0.5rem;
   }
 }
 

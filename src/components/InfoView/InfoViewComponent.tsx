@@ -12,23 +12,32 @@ interface IProps {
 }
 
 const InfoViewComponent = (props: IProps): JSX.Element => {
-  const { locationTitle, guestsTitle, handleLocationPress, handleGuestsPress } = props;
+  const { locationTitle, guestsTitle, handleLocationPress, handleGuestsPress } =
+    props;
+
   let guestsTextColorEnabled: boolean = true;
   if (guestsTitle === InitialGuestsTitle) {
     guestsTextColorEnabled = false;
   }
+
   return (
     <div className={infoViewStyles.navBar}>
       <div id={infoViewStyles["icon-container"]}>
         <img id={infoViewStyles["logo"]} src={Logo} alt="logo" />
       </div>
       <div className={infoViewStyles.searchBar}>
-        <div id={infoViewStyles["location-item"]} className={infoViewStyles.closedItem}>
+        <div
+          id={infoViewStyles["location-item"]}
+          className={infoViewStyles.closedItem}
+        >
           <button onClick={handleLocationPress}>
             <p>{locationTitle}</p>
           </button>
         </div>
-        <div id={infoViewStyles["guests-item"]} className={infoViewStyles.closedItem}>
+        <div
+          id={infoViewStyles["guests-item"]}
+          className={infoViewStyles.closedItem}
+        >
           <button onClick={handleGuestsPress}>
             <p
               id={
