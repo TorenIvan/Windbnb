@@ -6,7 +6,12 @@ import NoStaysComponent from "../NoStays/NoStaysComponent";
 import PlacesComponent from "./PlacesComponent";
 import PlacesService from "./PlacesService";
 
-const Places = (props: { userChoice: UserChoice }): JSX.Element => {
+interface IProps {
+  userChoice: UserChoice;
+  onStaysFound: (staysCount: number) => void;
+}
+
+const Places = (props: IProps): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(false);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [stays, setStays] = useState<PlacesType>([]);
@@ -24,6 +29,7 @@ const Places = (props: { userChoice: UserChoice }): JSX.Element => {
         const places = await placesService.GetPlaces();
         if (didCancel === false) {
           setStays(places);
+          props.onStaysFound(places.length);
         }
       } catch (error) {
         setFetchError(true);

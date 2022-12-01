@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 import modalStyles from "./components/Modal/Modal.module.scss";
 import InfoView from "./components/InfoView/InfoView";
 import InfoLine from "./components/InfoLine/InfoLine";
@@ -21,6 +21,7 @@ import { Guests } from "./utils/Types";
 import Places from "./components/Places/Places";
 
 const App: FC = (): JSX.Element => {
+  const [totalStays, setTotalStays] = useState<number>(0);
   const [location, updateLocation] = useLocationInfo(InitialLocationTitle);
   const [guests, updateGuests] = useGuestsInfo({
     adults: InitialAdults,
@@ -29,6 +30,11 @@ const App: FC = (): JSX.Element => {
   const [modalSearchType, updateModalSearchType] = useModalVisibility(
     ModalVisibility.Hidden
   );
+
+  const calculateTotalStays = (staysCount: number) => {
+    console.log("edo: ", staysCount);
+    setTotalStays(staysCount);
+  };
 
   const searchPlaces = (
     location: string,
@@ -76,10 +82,10 @@ const App: FC = (): JSX.Element => {
             location={location}
             totalGuests={totalGuests}
           />
-          <InfoLine />
+          <InfoLine totalStays={totalStays} />
         </header>
         <main>
-          <Places userChoice={userChoice} />
+          <Places userChoice={userChoice} onStaysFound={calculateTotalStays} />
         </main>
         <footer></footer>
       </div>
