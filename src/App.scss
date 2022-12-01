@@ -17,9 +17,13 @@ $small: 924px;
 }
 
 .App {
-  min-width: 100%;
-  margin-top: 2rem;
-  background-color: var(--almostWhite);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   transition: all 0.5s ease-in-out;
 }
 
@@ -49,6 +53,7 @@ header {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-top: 2rem;
 }
 
 main {

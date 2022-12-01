@@ -9,13 +9,13 @@ const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
       <div id={stayStyles["image-container"]}>
         <img src={stay.photo} />
       </div>
-      <div className={stayStyles.StayItem}>
-        <p>eee</p>
-        <p></p>
-        <p></p>
+      <div className={stayStyles.StayItem} id={stayStyles["first-item"]}>
+        <span>eee</span>
+        <span></span>
+        <span></span>
       </div>
       <div className={stayStyles.StayItem}>
-        <p>{stay.title}</p>
+        <p id={stayStyles["title-text"]}>{stay.title}</p>
       </div>
     </div>
   );
