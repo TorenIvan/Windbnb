@@ -15,7 +15,7 @@ const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
         <span></span>
       </div>
       <div className={stayStyles.StayItem}>
-        <p id={stayStyles["title-text"]}>{stay.title}</p>
+        <span id={stayStyles["title-text"]}>{stay.title}</span>
       </div>
     </div>
   );

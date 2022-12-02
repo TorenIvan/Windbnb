@@ -43,4 +43,7 @@
   font-weight: 550;
   color: rgba(31, 41, 55, 1);
   line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

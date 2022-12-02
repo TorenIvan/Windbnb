@@ -50,7 +50,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
           />
           <SearchItem
             title={SearchItemType.guests}
-            content={"guests"}
+            content={SearchItemType.guests}
             isItBeingProcessed={searchingGuests}
             onSearchItemPress={updateSearchType}
           />

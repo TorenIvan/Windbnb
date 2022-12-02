@@ -17,6 +17,8 @@ const Places = (props: IProps): JSX.Element => {
   const [stays, setStays] = useState<PlacesType>([]);
   const userChoice = useRef<UserChoice>(props.userChoice);
 
+  const { onStaysFound } = props;
+
   useEffect(() => {
     setLoading(true);
     setFetchError(false);
@@ -28,8 +30,8 @@ const Places = (props: IProps): JSX.Element => {
         const placesService = new PlacesService(userChoice.current);
         const places = await placesService.GetPlaces();
         if (didCancel === false) {
+          onStaysFound(places.length);
           setStays(places);
-          props.onStaysFound(places.length);
         }
       } catch (error) {
         setFetchError(true);
