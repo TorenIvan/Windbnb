@@ -35,7 +35,7 @@ class PlacesService {
       const places: PlacesTypeExtended = allPlacesExtendedWithId.filter(
         (place: PlaceTypeExtended) =>
           place.country === this.country &&
-          place.city === this.city &&
+          //place.city === this.city &&
           place.maxGuests >= this.adults + this.children
       );
       return places;

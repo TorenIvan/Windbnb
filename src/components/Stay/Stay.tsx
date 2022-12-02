@@ -18,11 +18,7 @@ const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
   const renderTypeBeds: JSX.Element = () => {
     let infoString = `${stay.type}`;
     if (stay.beds !== null) infoString += `${Dot} ${stay.beds} ${Beds}`;
-    return (
-      //<div id={stayStyles["typeBedsInfo"]}>
-      <span>{infoString}</span>
-      //</div>
-    );
+    return <span id={stayStyles["info-string"]}>{infoString}</span>;
   };
 
   const renderRating: JSX.Element = () => {

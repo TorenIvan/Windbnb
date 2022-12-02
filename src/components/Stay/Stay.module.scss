@@ -1,3 +1,11 @@
+$small: 480px;
+
+.overflowText {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .StayContainer {
   display: flex;
   flex-direction: column;
@@ -35,7 +43,7 @@
 #first-item {
   margin-top: 0.7em;
   height: 1.5em;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.2em;
 }
 
 #title-text {
@@ -43,10 +51,8 @@
   font-style: normal;
   font-weight: 550;
   color: rgba(31, 41, 55, 1);
-  line-height: 18px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  line-height: 22px;
+  @extend .overflowText;
 }
 
 #super-host {
@@ -68,14 +74,26 @@
     font-style: normal;
     font-family: sans-serif;
     font-size: 14px;
+    @extend .overflowText;
+
+    @media screen and (max-width: $small) {
+      font-size: 12px;
+    }
   }
 }
 
-//#typeBedsInfo {
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//}
+#info-string {
+  color: rgba(31, 41, 55, 0.6);
+  font-weight: 600;
+  font-style: normal;
+  font-family: sans-serif;
+  font-size: 16px;
+  @extend .overflowText;
+
+  @media screen and (max-width: $small) {
+    font-size: 14px;
+  }
+}
 
 #rating-container {
   height: 100%;
@@ -90,6 +108,10 @@
     font-size: 1.5em;
     padding-bottom: 0.1em;
     color: red;
+
+    @media screen and (max-width: $small) {
+      font-size: 1.4em;
+    }
   }
 
   span:second-child {
@@ -98,5 +120,9 @@
     font-style: normal;
     font-family: sans-serif;
     font-size: 14px;
+
+    @media screen and (max-width: $small) {
+      font-size: 12px;
+    }
   }
 }
