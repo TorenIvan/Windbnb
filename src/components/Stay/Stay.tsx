@@ -15,6 +15,14 @@ const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
     return null;
   };
 
+  const renderTypeBeds: JSX.Element = () => {
+    return <span></span>;
+  };
+
+  const renderRating: JSX.Element = () => {
+    return <span></span>;
+  };
+
   return (
     <div className={stayStyles.StayContainer}>
       <div id={stayStyles["image-container"]}>
@@ -22,8 +30,8 @@ const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
       </div>
       <div className={stayStyles.StayItem} id={stayStyles["first-item"]}>
         {renderSuperHost()}
-        <span></span>
-        <span></span>
+        {renderTypeBeds()}
+        {renderRating()}
       </div>
       <div className={stayStyles.StayItem}>
         <span id={stayStyles["title-text"]}>{stay.title}</span>
