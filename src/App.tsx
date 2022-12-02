@@ -32,7 +32,6 @@ const App: FC = (): JSX.Element => {
   );
 
   const calculateTotalStays = (staysCount: number) => {
-    console.log("edo: ", staysCount);
     setTotalStays(staysCount);
   };
 

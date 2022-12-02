@@ -45,3 +45,7 @@ export const MinusSymbol: string = "-";
 export const AddSymbol: string = "+";
 
 export const SuperHost: string = "Super Host";
+
+export const Dot: string = ".";
+
+export const Beds: string = "beds";

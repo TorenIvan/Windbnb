@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { PlaceType } from "../../utils/Types.ts";
-import { SuperHost, Dot, Beds } from "../../utils/Constants.ts";
+import { SuperHost } from "../../utils/Constants.ts";
 import stayStyles from "./Stay.module.scss";
 
 const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
@@ -16,22 +16,13 @@ const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
   };
 
   const renderTypeBeds: JSX.Element = () => {
-    let infoString = `${stay.type}`;
-    if (stay.beds !== null) infoString += `${Dot} ${stay.beds} ${Beds}`;
-    return (
-      //<div id={stayStyles["typeBedsInfo"]}>
-      <span>{infoString}</span>
-      //</div>
-    );
+    let infoString = stay.type + ".";
+    if(stay.beds !== null) infoString += " " + stay.beds + " beds"
+    return <span></span>;
   };
 
   const renderRating: JSX.Element = () => {
-    return (
-      <div id={stayStyles["rating-container"]}>
-        <span id={stayStyles["star"]}>&#9733;</span>
-        <span>&nbsp;&nbsp;{stay.rating}</span>
-      </div>
-    );
+    return <span></span>;
   };
 
   return (

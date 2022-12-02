@@ -60,8 +60,39 @@
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-top: 0.1em;
+  margin-right: 1em;
 
   span {
+    color: rgba(31, 41, 55, 0.8);
+    font-weight: 600;
+    font-style: normal;
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+}
+
+//#typeBedsInfo {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}
+
+#rating-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+
+  span:first-child {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.5em;
+    padding-bottom: 0.1em;
+    color: red;
+  }
+
+  span:second-child {
     color: rgba(31, 41, 55, 0.8);
     font-weight: 600;
     font-style: normal;
