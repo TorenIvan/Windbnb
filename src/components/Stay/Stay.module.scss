@@ -30,11 +30,11 @@
   border: none;
   outline: none;
   height: 2em;
-  border: 1px solid red;
 }
 
 #first-item {
-  padding-top: 0.4em;
+  margin-top: 0.7em;
+  height: 1.8em;
 }
 
 #title-text {
@@ -46,4 +46,25 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+#super-host {
+  border: 2px solid rgba(31, 41, 55, 0.5);
+  border-radius: 35px;
+  outline: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.1em;
+
+  span {
+    color: rgba(31, 41, 55, 0.8);
+    font-weight: 600;
+    font-style: normal;
+    font-family: sans-serif;
+    font-size: 14px;
+  }
 }

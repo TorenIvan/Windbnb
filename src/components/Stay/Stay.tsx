@@ -1,16 +1,27 @@
 import React, { memo } from "react";
 import { PlaceType } from "../../utils/Types.ts";
+import { SuperHost } from "../../utils/Constants.ts";
 import stayStyles from "./Stay.module.scss";
 
 const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
-  console.log(stay.title);
+  const renderSuperHost: JSX.Element | null = () => {
+    if (stay.superHost === true) {
+      return (
+        <div id={stayStyles["super-host"]}>
+          <span>{SuperHost.toUpperCase()}</span>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className={stayStyles.StayContainer}>
       <div id={stayStyles["image-container"]}>
         <img src={stay.photo} />
       </div>
       <div className={stayStyles.StayItem} id={stayStyles["first-item"]}>
-        <span>eee</span>
+        {renderSuperHost()}
         <span></span>
         <span></span>
       </div>

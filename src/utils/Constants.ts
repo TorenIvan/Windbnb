@@ -43,3 +43,5 @@ export const ChildrenClarificationText: string = "Age 2-12";
 export const MinusSymbol: string = "-";
 
 export const AddSymbol: string = "+";
+
+export const SuperHost: string = "Super Host";
