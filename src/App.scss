@@ -29,6 +29,7 @@ $small: 924px;
 
 .App.fixedBackground {
   background-color: var(--searchModal);
+  user-select: none;
 }
 
 .MainApp {

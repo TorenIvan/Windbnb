@@ -56,7 +56,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
           />
           <div className="item-bar" id="search-icon">
             <button onClick={searchPlace}>
-              <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
+              <p>&#128269;&nbsp;&nbsp;&nbsp;Search</p>
             </button>
           </div>
         </div>
