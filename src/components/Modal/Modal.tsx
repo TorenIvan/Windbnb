@@ -75,7 +75,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
         </div>
         <div className="item-bar small-screen" id="search-icon">
           <button onClick={searchPlace}>
-            <p>&#xf002;&nbsp;&nbsp;&nbsp;Search</p>
+            <p>&#128269;&nbsp;&nbsp;&nbsp;Search</p>
           </button>
         </div>
       </div>
