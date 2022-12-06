@@ -6,18 +6,50 @@ import {
 } from "../../utils/Types";
 
 class StaysService {
-  private readonly country: string;
-  private readonly city: string;
   private readonly adults: number;
   private readonly children: number;
+  private readonly country: string;
+  private readonly city: string | null;
   private static readonly STAYS_URL: string = import.meta.env.VITE_STAYS_PATH;
 
   constructor(userChoice: UserChoice) {
-    this.city = userChoice.location.split(",")[0].trim();
-    this.country = userChoice.location.split(",")[1].trim();
     this.adults = userChoice.guests.adults;
     this.children = userChoice.guests.children;
+    this.city = StaysService.GetCity(userChoice.location);
+    this.country = StaysService.GetCountry(userChoice.location);
   }
+
+  FilterStaysByUserChoice: StaysTypeExtended = (
+    allStays: StaysTypeExtended
+  ) => {
+    if (this.city === null) {
+      return allStays.filter(
+        (stay: StayTypeExtended) =>
+          stay.country === this.country &&
+          stay.maxGuests >= this.adults + this.children
+      );
+    }
+    return allStays.filter(
+      (stay: StayTypeExtended) =>
+        stay.country === this.country &&
+        stay.city === this.city &&
+        stay.maxGuests >= this.adults + this.children
+    );
+  };
+
+  static GetCountry: string = (location: string) => {
+    if (location.includes(",")) {
+      return location.split(",")[1].trim();
+    }
+    return location.split(" ")[1].trim();
+  };
+
+  static GetCity: string | null = (location: string) => {
+    if (location.includes(",")) {
+      return location.split(",")[0].trim();
+    }
+    return null;
+  };
 
   async GetStays(): Promise<StaysTypeExtended> {
     try {
@@ -32,11 +64,8 @@ class StaysService {
       const allStaysExtendedWithId: StaysTypeExtended = allStays.map(
         (stay, index) => ({ ...stay, id: index })
       );
-      const stays: StaysTypeExtended = allStaysExtendedWithId.filter(
-        (stay: StayTypeExtended) =>
-          stay.country === this.country &&
-          stay.city === this.city &&
-          stay.maxGuests >= this.adults + this.children
+      const stays: StaysTypeExtended = this.FilterStaysByUserChoice(
+        allStaysExtendedWithId
       );
       return stays;
     } catch (error) {

@@ -12,9 +12,9 @@ export const Stay = "stay";
 
 export const Stays = "stays";
 
-export const InitialLocationTitle = "Helsinki, Finland";
+export const InitialLocationTitle = "Finland";
 
-export const InitialStay = "Helsinki";
+export const InitialStay = "Whole Finland";
 
 export const InitialAdults = 1;
 
@@ -30,6 +30,7 @@ export const InitialLocations: string[] = [
   "Turku, Finland",
   "Oulu, Finland",
   "Vaasa, Finland",
+  "Whole Finland",
 ];
 
 export const Adults: string = "Adults";

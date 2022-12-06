@@ -13,6 +13,7 @@ import { FC } from "react";
 import {
   ModalVisibility,
   InitialLocationTitle,
+  InitialStay,
   InitialAdults,
   InitialChildren,
 } from "./utils/Constants";
@@ -21,7 +22,7 @@ import Stays from "./components/Stays/Stays";
 
 const App: FC = (): JSX.Element => {
   const [totalStays, setTotalStays] = useState<number>(0);
-  const [location, updateLocation] = useLocationInfo(InitialLocationTitle);
+  const [location, updateLocation] = useLocationInfo(InitialStay);
   const [guests, updateGuests] = useGuestsInfo({
     adults: InitialAdults,
     children: InitialChildren,
