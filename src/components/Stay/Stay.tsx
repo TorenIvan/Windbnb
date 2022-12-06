@@ -1,9 +1,9 @@
 import React, { memo } from "react";
-import { PlaceType } from "../../utils/Types.ts";
+import { StayType } from "../../utils/Types.ts";
 import { SuperHost, Dot, Beds } from "../../utils/Constants.ts";
 import stayStyles from "./Stay.module.scss";
 
-const Stay = ({ stay }: { stay: PlaceType }): JSX.Element => {
+const Stay = ({ stay }: { stay: StayType }): JSX.Element => {
   const renderSuperHost: JSX.Element | null = () => {
     if (stay.superHost === true) {
       return (

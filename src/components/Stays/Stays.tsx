@@ -1,20 +1,20 @@
 import { memo, useRef, useState, useEffect } from "react";
-import { PlacesType, UserChoice } from "../../utils/Types";
+import { StaysType, UserChoice } from "../../utils/Types";
 import ErrorComponent from "../Error/ErrorComponent";
 import LoadingStaysComponent from "../Loading/LoadingStaysComponent";
 import NoStaysComponent from "../NoStays/NoStaysComponent";
-import PlacesComponent from "./PlacesComponent";
-import PlacesService from "./PlacesService";
+import StaysComponent from "./StaysComponent";
+import StaysService from "./StaysService";
 
 interface IProps {
   userChoice: UserChoice;
   onStaysFound: (staysCount: number) => void;
 }
 
-const Places = (props: IProps): JSX.Element => {
+const Stays = (props: IProps): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(false);
   const [fetchError, setFetchError] = useState<boolean>(false);
-  const [stays, setStays] = useState<PlacesType>([]);
+  const [stays, setStays] = useState<StaysType>([]);
   const userChoice = useRef<UserChoice>(props.userChoice);
 
   const { onStaysFound } = props;
@@ -27,11 +27,11 @@ const Places = (props: IProps): JSX.Element => {
     let didCancel = false;
     (async () => {
       try {
-        const placesService = new PlacesService(userChoice.current);
-        const places = await placesService.GetPlaces();
+        const staysService = new StaysService(userChoice.current);
+        const stays = await staysService.GetStays();
         if (didCancel === false) {
-          onStaysFound(places.length);
-          setStays(places);
+          onStaysFound(stays.length);
+          setStays(stays);
         }
       } catch (error) {
         setFetchError(true);
@@ -48,7 +48,7 @@ const Places = (props: IProps): JSX.Element => {
   if (loading === true) return <LoadingStaysComponent />;
   if (fetchError === true) return <ErrorComponent />;
   if (stays.length === 0) return <NoStaysComponent />;
-  return <PlacesComponent stays={stays} />;
+  return <StaysComponent stays={stays} />;
 };
 
-export default memo(Places);
+export default memo(Stays);

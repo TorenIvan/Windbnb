@@ -13,12 +13,11 @@ import { FC } from "react";
 import {
   ModalVisibility,
   InitialLocationTitle,
-  InitialPlace,
   InitialAdults,
   InitialChildren,
 } from "./utils/Constants";
 import { Guests } from "./utils/Types";
-import Places from "./components/Places/Places";
+import Stays from "./components/Stays/Stays";
 
 const App: FC = (): JSX.Element => {
   const [totalStays, setTotalStays] = useState<number>(0);
@@ -35,7 +34,7 @@ const App: FC = (): JSX.Element => {
     setTotalStays(staysCount);
   };
 
-  const searchPlaces = (
+  const searchStays = (
     location: string,
     guests: Guests,
     updateUserChoice = false
@@ -70,7 +69,7 @@ const App: FC = (): JSX.Element => {
             key={modalSearchType}
             modalVisibilityType={modalSearchType}
             userChoice={userChoice}
-            setSearchTerms={searchPlaces}
+            setSearchTerms={searchStays}
           />
         </div>
       </div>
@@ -84,7 +83,7 @@ const App: FC = (): JSX.Element => {
           <InfoLine totalStays={totalStays} />
         </header>
         <main>
-          <Places userChoice={userChoice} onStaysFound={calculateTotalStays} />
+          <Stays userChoice={userChoice} onStaysFound={calculateTotalStays} />
         </main>
         <footer></footer>
       </div>

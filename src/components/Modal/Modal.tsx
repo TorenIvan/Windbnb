@@ -31,7 +31,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
     setSearchTerms(location, guests);
   };
 
-  const searchPlace = (event: MouseEvent<HTMLButtonElement>) => {
+  const searchStay = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setSearchTerms(location, guests, true);
   };
@@ -55,7 +55,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
             onSearchItemPress={updateSearchType}
           />
           <div className="item-bar" id="search-icon">
-            <button onClick={searchPlace}>
+            <button onClick={searchStay}>
               <p>&#128269;&nbsp;&nbsp;&nbsp;Search</p>
             </button>
           </div>
@@ -74,7 +74,7 @@ const Modal: FC<IModalProps> = (props): JSX.Element => {
           <div className="item-bar" id="search-icon" />
         </div>
         <div className="item-bar small-screen" id="search-icon">
-          <button onClick={searchPlace}>
+          <button onClick={searchStay}>
             <p>&#128269;&nbsp;&nbsp;&nbsp;Search</p>
           </button>
         </div>

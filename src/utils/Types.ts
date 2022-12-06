@@ -8,7 +8,7 @@ export type UserChoice = {
   guests: Guests;
 };
 
-export type PlaceType = {
+export type StayType = {
   city: string;
   country: string;
   superHost: boolean;
@@ -20,8 +20,8 @@ export type PlaceType = {
   photo: string;
 };
 
-export type PlacesType = PlaceType[];
+export type StaysType = StayType[];
 
-export type PlaceTypeExtended = PlaceType & { id: number };
+export type StayTypeExtended = StayType & { id: number };
 
-export type PlacesTypeExtended = PlaceTypeExtended[];
+export type StaysTypeExtended = StayTypeExtended[];

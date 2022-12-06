@@ -4,7 +4,7 @@ import {
   InitialChildren,
   InitialGuestsTitle,
   InitialLocationTitle,
-  InitialPlace,
+  InitialStay,
   ModalVisibility,
   SearchItemType,
 } from "../../utils/Constants";
@@ -33,12 +33,13 @@ const InfoView: FC<IProps> = (props): JSX.Element => {
   }, []);
 
   let locationTitle: string = location;
-  if (location === InitialPlace) locationTitle = InitialLocationTitle;
+  if (location === InitialStay) locationTitle = InitialLocationTitle;
 
   let guestsTitle: string = `${totalGuests.toString()} ${CapitalizeFirstLetterOfString(
     SearchItemType.guests
   )}`;
-  if (totalGuests === InitialAdults + InitialChildren) guestsTitle = InitialGuestsTitle;
+  if (totalGuests === InitialAdults + InitialChildren)
+    guestsTitle = InitialGuestsTitle;
 
   return (
     <InfoViewComponent

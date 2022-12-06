@@ -14,7 +14,7 @@ export const Stays = "stays";
 
 export const InitialLocationTitle = "Helsinki, Finland";
 
-export const InitialPlace = "Helsinki";
+export const InitialStay = "Helsinki";
 
 export const InitialAdults = 1;
 
