@@ -2,7 +2,7 @@ import { memo, useRef, useState, useEffect } from "react";
 import { StaysType, UserChoice } from "../../utils/Types";
 import ErrorComponent from "../Error/ErrorComponent";
 import LoadingStaysComponent from "../Loading/LoadingStaysComponent";
-import NoStaysComponent from "../NoStays/NoStaysComponent";
+import NoStaysComponent from "./NoStaysComponent";
 import StaysComponent from "./StaysComponent";
 import StaysService from "./StaysService";
 

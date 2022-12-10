@@ -1,3 +1,5 @@
+import { DefaultErrorType } from "./Types";
+
 export enum ModalVisibility {
   Hidden,
   EditLocation,
@@ -50,3 +52,9 @@ export const SuperHost: string = "Super Host";
 export const Dot: string = ".";
 
 export const Beds: string = "beds";
+
+export const DefaultError: DefaultErrorType = {
+  image: "../../pexels-binyamin-mellish-186077.jpg",
+  title: "edo",
+  body: "edoodo",
+} as const;

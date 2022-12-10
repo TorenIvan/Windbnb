@@ -1,0 +1,19 @@
+$limit-screen-width: 1300px;
+$one-franction: minmax(0, 1fr);
+$two-franctions: repeat(2, minmax(0, 1fr));
+
+.ErrorContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: $one-franction;
+  grid-template-rows: $two-franctions;
+  place-items: center;
+  grid-row-gap: 5rem;
+
+  @media screen and (min-width: $limit-screen-width) : {
+    grid-template-columns: $two-franctions;
+    grid-template-rows: $one-franction;
+    place-items: center space-between;
+    grid-column-gap: 10vw;
+  }
+}

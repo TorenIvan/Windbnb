@@ -25,3 +25,9 @@ export type StaysType = StayType[];
 export type StayTypeExtended = StayType & { id: number };
 
 export type StaysTypeExtended = StayTypeExtended[];
+
+export type DefaultErrorType = {
+  image: string;
+  title: string;
+  body: string;
+};
