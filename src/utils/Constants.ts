@@ -59,3 +59,14 @@ export const DefaultError: DefaultErrorType = {
   title: "I have bad news for you",
   body: "Something went wrong with this page. Please, try searching again. Thank you!!!",
 } as const;
+
+export const NoStaysInfo = (
+  location: string,
+  adults: number,
+  children: number
+): DefaultErrorType => ({
+  image:
+    "https://images.unsplash.com/photo-1533374206871-33b8f07c216c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80",
+  title: DefaultError.title,
+  body: `Stays are not available for ${adults} adults and ${children} children at ${location}`,
+});

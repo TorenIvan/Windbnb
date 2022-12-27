@@ -47,7 +47,14 @@ const Stays = (props: IProps): JSX.Element => {
 
   if (loading === true) return <LoadingStaysComponent />;
   if (fetchError === true) return <ErrorComponent />;
-  if (stays.length === 0) return <NoStaysComponent />;
+  if (stays.length === 0)
+    return (
+      <NoStaysComponent
+        location={userChoice.current.location}
+        adults={userChoice.current.guests.adults}
+        children={userChoice.current.guests.children}
+      />
+    );
   return <StaysComponent stays={stays} />;
 };
 
