@@ -1,5 +1,5 @@
 import { memo, useRef, useState, useEffect } from "react";
-import { StaysType, UserChoice } from "../../utils/Types";
+import { StaysTypeExtended, UserChoice } from "../../utils/Types";
 import ErrorComponent from "../Error/ErrorComponent";
 import LoadingStaysComponent from "../Loading/LoadingStaysComponent";
 import NoStaysComponent from "./NoStaysComponent";
@@ -14,7 +14,7 @@ interface IProps {
 const Stays = (props: IProps): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(false);
   const [fetchError, setFetchError] = useState<boolean>(false);
-  const [stays, setStays] = useState<StaysType>([]);
+  const [stays, setStays] = useState<StaysTypeExtended>([]);
   const userChoice = useRef<UserChoice>(props.userChoice);
 
   const { onStaysFound } = props;

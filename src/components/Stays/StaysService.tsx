@@ -19,9 +19,9 @@ class StaysService {
     this.country = StaysService.GetCountry(userChoice.location);
   }
 
-  FilterStaysByUserChoice: StaysTypeExtended = (
+  FilterStaysByUserChoice = (
     allStays: StaysTypeExtended
-  ) => {
+  ): StaysTypeExtended => {
     if (this.city === null) {
       return allStays.filter(
         (stay: StayTypeExtended) =>
@@ -37,14 +37,14 @@ class StaysService {
     );
   };
 
-  static GetCountry: string = (location: string) => {
+  static GetCountry = (location: string): string => {
     if (location.includes(",")) {
       return location.split(",")[1].trim();
     }
     return location.split(" ")[1].trim();
   };
 
-  static GetCity: string | null = (location: string) => {
+  static GetCity = (location: string): string | null => {
     if (location.includes(",")) {
       return location.split(",")[0].trim();
     }
@@ -67,6 +67,7 @@ class StaysService {
       const stays: StaysTypeExtended = this.FilterStaysByUserChoice(
         allStaysExtendedWithId
       );
+      //throw "error";
       return stays;
     } catch (error) {
       console.error(error);

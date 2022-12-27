@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react";
 
-type ReturnDataType = [Location: string, modifyLocation: (location: string) => void];
+type ReturnDataType = [
+  Location: string,
+  modifyLocation: (location: string) => void
+];
 
 const useLocationInfo = (searchLocation: string): ReturnDataType => {
   const [location, setLocation] = useState<string>(searchLocation);

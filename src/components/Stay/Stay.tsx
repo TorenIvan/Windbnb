@@ -1,10 +1,9 @@
-import React, { memo } from "react";
-import { StayType } from "../../utils/Types.ts";
-import { SuperHost, Dot, Beds } from "../../utils/Constants.ts";
+import { StayType } from "../../utils/Types";
+import { SuperHost, Dot, Beds } from "../../utils/Constants";
 import stayStyles from "./Stay.module.scss";
 
 const Stay = ({ stay }: { stay: StayType }): JSX.Element => {
-  const renderSuperHost: JSX.Element | null = () => {
+  const renderSuperHost = (): JSX.Element | null => {
     if (stay.superHost === true) {
       return (
         <div id={stayStyles["super-host"]}>
@@ -15,13 +14,13 @@ const Stay = ({ stay }: { stay: StayType }): JSX.Element => {
     return null;
   };
 
-  const renderTypeBeds: JSX.Element = () => {
+  const renderTypeBeds = (): JSX.Element => {
     let infoString = `${stay.type}`;
     if (stay.beds !== null) infoString += `${Dot} ${stay.beds} ${Beds}`;
     return <span id={stayStyles["info-string"]}>{infoString}</span>;
   };
 
-  const renderRating: JSX.Element = () => {
+  const renderRating = (): JSX.Element => {
     return (
       <div id={stayStyles["rating-container"]}>
         <span id={stayStyles["star"]}>&#9733;</span>

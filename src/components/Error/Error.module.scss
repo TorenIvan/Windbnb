@@ -1,0 +1,62 @@
+$limit-screen-width: 1200px;
+$limit-font-mobile-width: 600px;
+$one-franction: minmax(0, 1fr);
+$two-franctions: repeat(2, minmax(0, 1fr));
+
+.ErrorContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: $one-franction;
+  grid-template-rows: $two-franctions;
+  place-items: flex-start center;
+  grid-column-gap: 0;
+
+  @media screen and (min-width: $limit-screen-width) {
+    grid-template-columns: $two-franctions;
+    grid-template-rows: $one-franction;
+    place-items: center space-evenly;
+    grid-column-gap: 10vw;
+  }
+}
+
+#image-container {
+  width: clamp(min(40vw, 60rem), 600px, 100%);
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+#image-container img {
+  border-radius: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#text-container {
+  width: clamp(min(30vw, 50rem), 400px, 65%);
+  font-family: "Space Mono";
+  @media screen and (min-width: $limit-screen-width) {
+    margin-right: 20vw;
+  }
+}
+
+#title {
+  @media screen and (max-width: $limit-font-mobile-width) {
+    font-size: 8vw;
+  }
+  font-weight: 700;
+  color: #333333;
+}
+
+#body {
+  @media screen and (max-width: $limit-font-mobile-width) {
+    font-size: 5vw;
+  }
+  font-weight: 400;
+  font-style: normal;
+  color: #4f4f4f;
+}

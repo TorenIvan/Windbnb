@@ -12,7 +12,6 @@ import {
 import { FC } from "react";
 import {
   ModalVisibility,
-  InitialLocationTitle,
   InitialStay,
   InitialAdults,
   InitialChildren,

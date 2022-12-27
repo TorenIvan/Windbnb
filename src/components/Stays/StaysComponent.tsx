@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { StaysTypeExtended, StayTypeExtended } from "../../utils/Types";
-import Stay from "../Stay/Stay.tsx";
+import Stay from "../Stay/Stay";
 import staysStyles from "./Stays.module.scss";
 
 interface IProps {
