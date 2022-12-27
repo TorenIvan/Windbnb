@@ -10,7 +10,7 @@ const ErrorComponent = (props: IProps) => {
   return (
     <div className={errorStyles.ErrorContainer}>
       <div id={errorStyles["image-container"]}>
-        <img src={image} alt="ErrorInfoImage" />
+        <img src={image} alt="ErrorInfoImage" loading="lazy" />
       </div>
       <div id={errorStyles["text-container"]}>
         <h2 id={errorStyles["title"]}>{title}</h2>

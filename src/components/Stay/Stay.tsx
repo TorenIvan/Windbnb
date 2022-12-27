@@ -32,7 +32,7 @@ const Stay = ({ stay }: { stay: StayType }): JSX.Element => {
   return (
     <div className={stayStyles.StayContainer}>
       <div id={stayStyles["image-container"]}>
-        <img src={stay.photo} />
+        <img src={stay.photo} alt={stay.title} loading="lazy" />
       </div>
       <div className={stayStyles.StayItem} id={stayStyles["first-item"]}>
         {renderSuperHost()}
