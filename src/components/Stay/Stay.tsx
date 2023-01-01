@@ -2,7 +2,11 @@ import { StayType } from "../../utils/Types";
 import { SuperHost, Dot, Beds } from "../../utils/Constants";
 import stayStyles from "./Stay.module.scss";
 
-const Stay = ({ stay }: { stay: StayType }): JSX.Element => {
+interface IProps {
+  stay: StayType;
+}
+
+const Stay = ({ stay }: IProps): JSX.Element => {
   const renderSuperHost = (): JSX.Element | null => {
     if (stay.superHost === true) {
       return (
